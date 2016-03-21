@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{ title }}</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>ADD PROFILE</h1>
+
+    <form action="/api/profile" method="post">
+    	<input type="text" name="firstName" placeholder="First Name" /><br />
+    	<input type="text" name="lastName" placeholder="Last Name" /><br />
+    	<input type="text" name="email" placeholder="Email" /><br />
+    	<input type="text" name="password" placeholder="Password" /><br />
+    	<br />
+    	<button type="submit">Add</button>
+    </form>
+  </body>
+</html>
