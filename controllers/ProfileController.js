@@ -57,6 +57,18 @@ module.exports = {
 
 			completion(null, profile.summary());
 		});
+	},
+
+	put: function(id, params, completion){
+
+		Profile.findByIdAndUpdate(id, params, {new:true}, function(err, profile){
+			if (err){
+				completion(err, null);
+			    return;
+			}
+
+			completion(null, profile.summary());
+		});
 	}
 
 
