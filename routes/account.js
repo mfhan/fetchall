@@ -48,6 +48,25 @@ router.get('/:resource', function(req, res, next) {
 
 router.post('/:resource', function(req, res, next) {
 	var resource = req.params.resource;
+	if (resource == 'register'){
+		ProfileController.post(req.body, function(err, result){
+			if (err){
+				res.json(createErrorResponse(err.message));
+			    return;
+			}
+
+			req.session.user = p._id;
+		    res.json({
+		    	confirmation:'success',
+		    	result: result
+		    });
+
+		    return;
+		});
+
+	}
+
+
 	if (resource == 'login'){
 		ProfileController.get({email:req.body.email}, true, function(err, results){
 			if (err){
