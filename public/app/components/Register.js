@@ -1,29 +1,48 @@
-var React = require('react');	
+var React = require('react');
+var FetchClientActions = require('../actions/FetchClientActions');
+var ProfileStore = require('../stores/ProfileStore');
 
 var Register = React.createClass({
 
 	getInitialState: function(){
 		return {
-			visitor: {
-				id: null,
-				name: '',
-				email: '',
-				password: ''
-			}
+			visitor: ProfileStore.getCurrentUser()
 		}
 	},
 
-	updateVisitor: function(event){
-		console.log(event.target.value);
+	componentDidMount: function(){
+		ProfileStore.addChangeListener(this.refresh);
+	},
 
+	refresh: function(){
+		this.setState({
+			visitor: ProfileStore.getCurrentUser()
+		});
+
+		console.log('UPDATED VISITOR: '+JSON.stringify(this.state.visitor));
 	},
 
 
+	updateVisitor: function(event){
+		var updatedVisitor = {
+			id: this.state.visitor.id,
+			name: this.state.visitor.name,
+			email: this.state.visitor.email,
+			password: this.state.visitor.password
+		}
+
+		updatedVisitor[event.target.id] = event.target.value;
+		FetchClientActions.updateCurrentUser(updatedVisitor);
+//		console.log(JSON.stringify(updatedVisitor));
+	},
+
+	register: function(event){
+		console.log('Register: ' + JSON.stringify(this.state.visitor));
+		event.preventDefault();
+	},
+
 	render: function(){
-
-
 		return(
-
 			<form role="form" className="landing-wide-form landing-form-overlay dark nobottommargin clearfix" style={{bottom:36}}>
                 <div className="heading-block nobottommargin nobottomborder">
                     <h2>Signup for FREE</h2>
@@ -31,16 +50,16 @@ var Register = React.createClass({
                 </div>
                 <div className="line" style={{margin: '20px 0 30px'}}></div>
                 <div className="col_full">
-                    <input onChange={this.updateVisitor} type="text" className="form-control input-lg not-dark" placeholder="Your Name" />
+                    <input onChange={this.updateVisitor} id="name" type="text" className="form-control input-lg not-dark" placeholder="Your Name" />
                 </div>
                 <div className="col_full">
-                    <input onChange={this.updateVisitor} type="email" className="form-control input-lg not-dark" placeholder="Your Email" />
+                    <input onChange={this.updateVisitor} id="email" type="email" className="form-control input-lg not-dark" placeholder="Your Email" />
                 </div>
                 <div className="col_full">
-                    <input onChange={this.updateVisitor} type="password" className="form-control input-lg not-dark" placeholder="Choose Password" />
+                    <input onChange={this.updateVisitor} id="password" type="password" className="form-control input-lg not-dark" placeholder="Choose Password" />
                 </div>
                 <div className="col_full nobottommargin">
-                    <button className="btn btn-lg btn-success btn-block nomargin" value="submit">START FREE TRIAL</button>
+                    <button onClick={this.register} className="btn btn-lg btn-success btn-block nomargin" value="submit">START FREE TRIAL</button>
                 </div>
             </form>
 

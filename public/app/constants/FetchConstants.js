@@ -1,0 +1,6 @@
+module.exports = {
+
+	CHANGE_EVENT: 'CHANGE_EVENT',
+	USER_UPDATED: 'USER_UPDATED'
+
+}
