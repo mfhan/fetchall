@@ -5,7 +5,7 @@ var App = React.createClass({
 
 	render: function(){
 		return (
-    <div id="wrapper" className="clearfix">
+    <div>
 
         <header id="header" className="no-sticky">
 
