@@ -5,9 +5,13 @@ var APIUtils = require('../utils/APIUtils');
 module.exports = {
 
 	createProfile: function(profile) {
-//		console.log('CREATE PROFILE: '+JSON.stringify(profile));
 		APIUtils.register(profile);
+	},
+
+	getCurrentUser: function(){
+		console.log('GET CURRENT USER: ');
 
 	}
+
 
 }

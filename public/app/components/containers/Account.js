@@ -1,7 +1,20 @@
 var React = require('react');
+var ProfileStore = require('../../stores/ProfileStore');
+var FetchServerActions = require('../../actions/FetchServerActions');
 
 
 var Account = React.createClass({
+	getInitialState: function(){
+		return {
+			currentUser: ProfileStore.getCurrentUser()
+		}
+	},
+
+	componentDidMount: function(){
+		console.log('COMPONENT DID MOUNT: '+JSON.stringify(this.state.currentUser));
+		FetchServerActions.getCurrentUser();
+
+	},
 
 	render: function(){
 		return (
@@ -11,7 +24,7 @@ var Account = React.createClass({
 		            <div className="content-wrap">
 
 		                <div className="container clearfix">
-							<h4>With Border</h4>
+							<h4>Welcome Dan!</h4>
 							<div className="tabs tabs-bordered clearfix" id="tab-2">
 
 								<ul className="tab-nav clearfix">
@@ -34,17 +47,17 @@ var Account = React.createClass({
 													<h3>Manage your Account</h3>
 
 													<div className="col_full">
-														<label for="login-form-username">First Name:</label>
+														<label>First Name:</label>
 														<input type="text" id="login-form-username" name="login-form-username" value="" className="form-control" />
 													</div>
 
 													<div className="col_full">
-														<label for="login-form-username">Last Name:</label>
+														<label>Last Name:</label>
 														<input type="text" id="login-form-username" name="login-form-username" value="" className="form-control" />
 													</div>
 
 													<div className="col_full">
-														<label for="login-form-password">Password:</label>
+														<label>Password:</label>
 														<input type="password" id="login-form-password" name="login-form-password" value="" className="form-control" />
 													</div>
 

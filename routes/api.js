@@ -104,6 +104,10 @@ router.post('/:resource', function(req, res, next) {
 		    return;
 		}
 
+		if (resource == 'profile') // new user registration, insert cookie:
+			req.session.user = result.id;
+
+
 	    res.json({
 	    	confirmation:'success',
 	    	result: result
