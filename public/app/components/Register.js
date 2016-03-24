@@ -44,8 +44,28 @@ var Register = React.createClass({
 
 	register: function(event){
 //		console.log('Register: ' + JSON.stringify(this.state.visitor));
-		FetchServerActions.createProfile(this.state.visitor);
 		event.preventDefault();
+		if (this.state.visitor.name == null){
+			alert('Please Enter Your Name.');
+			return;
+		}
+
+		if (this.state.visitor.name.length == 0){
+			alert('Please Enter Your Name.');
+			return;
+		}
+
+		if (this.state.visitor.email.length == 0){
+			alert('Please Enter Your Email.');
+			return;
+		}
+
+		if (this.state.visitor.password.length == 0){
+			alert('Please Enter Your Password.');
+			return;
+		}
+
+		FetchServerActions.createProfile(this.state.visitor);
 	},
 
 	render: function(){
