@@ -39,7 +39,7 @@ var Account = React.createClass({
 
 	finalizeChanges: function(event){
 		event.preventDefault();
-		console.log('Finalize Changes');
+		console.log('Finalize Changes: '+JSON.stringify(this.state.currentUser));
 
 	},
 
