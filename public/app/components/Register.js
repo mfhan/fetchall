@@ -1,5 +1,6 @@
 var React = require('react');
 var FetchClientActions = require('../actions/FetchClientActions');
+var FetchServerActions = require('../actions/FetchServerActions');
 var ProfileStore = require('../stores/ProfileStore');
 
 var Register = React.createClass({
@@ -20,6 +21,11 @@ var Register = React.createClass({
 		});
 
 		console.log('UPDATED VISITOR: '+JSON.stringify(this.state.visitor));
+		if (this.state.visitor.id == null)
+			return;
+
+		// user just registered, redirect to account page:
+		window.location.href = '/account';
 	},
 
 
@@ -37,7 +43,8 @@ var Register = React.createClass({
 	},
 
 	register: function(event){
-		console.log('Register: ' + JSON.stringify(this.state.visitor));
+//		console.log('Register: ' + JSON.stringify(this.state.visitor));
+		FetchServerActions.createProfile(this.state.visitor);
 		event.preventDefault();
 	},
 

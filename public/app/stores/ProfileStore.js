@@ -38,10 +38,13 @@ ProfileStore.dispatchToken = FetchDispatcher.register(function(action) {
 		var updatedUser = action.currentUser;
 
 		var name = updatedUser.name;
-		var parts = name.split(' ');
-		updatedUser['firstName'] = parts[0];
-		if (parts.length > 1){
-			updatedUser['lastName'] = parts[parts.length-1];
+
+		if (name != null){
+			var parts = name.split(' ');
+			updatedUser['firstName'] = parts[0];
+			if (parts.length > 1){
+				updatedUser['lastName'] = parts[parts.length-1];
+			}
 		}
 
 		currentUser = updatedUser;
