@@ -11,9 +11,16 @@ var Account = React.createClass({
 	},
 
 	componentDidMount: function(){
-		console.log('COMPONENT DID MOUNT: '+JSON.stringify(this.state.currentUser));
+		ProfileStore.addChangeListener(this.refresh);
 		FetchServerActions.getCurrentUser();
+	},
 
+	refresh: function(){
+		this.setState({
+			currentUser: ProfileStore.getCurrentUser()
+		});
+
+		console.log('REFRESH: '+JSON.stringify(this.state.currentUser));
 	},
 
 	render: function(){
@@ -24,7 +31,7 @@ var Account = React.createClass({
 		            <div className="content-wrap">
 
 		                <div className="container clearfix">
-							<h4>Welcome Dan!</h4>
+							<h4>Welcome {this.state.currentUser.firstName.toUpperCase() }!</h4>
 							<div className="tabs tabs-bordered clearfix" id="tab-2">
 
 								<ul className="tab-nav clearfix">

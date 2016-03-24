@@ -40,7 +40,12 @@ module.exports = {
 	checkCurrentUser: function(){
 		urlRequest('get', '/account/currentuser', null)
 		.then(function(response){
-			console.log('CURRENT USER: '+JSON.stringify(response));
+//			console.log('CURRENT USER: '+JSON.stringify(response));
+			FetchDispatcher.dispatch({
+				type: FetchConstants.USER_UPDATED,
+				currentUser: response.profile
+			});
+
 		})
 		.catch(function(error){
 
