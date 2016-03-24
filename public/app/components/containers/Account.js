@@ -37,6 +37,12 @@ var Account = React.createClass({
 		FetchClientActions.updateCurrentUser(updatedCurrentUser);
 	},
 
+	finalizeChanges: function(event){
+		event.preventDefault();
+		console.log('Finalize Changes');
+
+	},
+
 	render: function(){
 		return (
 			<div>
@@ -83,7 +89,7 @@ var Account = React.createClass({
 													</div>
 
 													<div className="col_full nobottommargin">
-														<button className="button button-3d nomargin" id="login-form-submit" name="login-form-submit" value="update">Update</button>
+														<button onClick={this.finalizeChanges} className="button button-3d nomargin" id="login-form-submit" name="login-form-submit" value="update">Update</button>
 													</div>
 
 												</form>
