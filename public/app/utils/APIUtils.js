@@ -53,6 +53,12 @@ module.exports = {
 		urlRequest('put', '/api/profile/'+profile.id, profile)
 		.then(function(response){
 			console.log('API UTILS - '+JSON.stringify(response));
+
+			FetchDispatcher.dispatch({
+				type: FetchConstants.USER_UPDATED,
+				currentUser: response.result
+			});
+			
 		})
 		.catch(function(error){
 

@@ -7,7 +7,8 @@ var FetchClientActions = require('../../actions/FetchClientActions');
 var Account = React.createClass({
 	getInitialState: function(){
 		return {
-			currentUser: ProfileStore.getCurrentUser()
+			currentUser: ProfileStore.getCurrentUser(),
+			isUpdating: false
 		}
 	},
 
@@ -17,8 +18,13 @@ var Account = React.createClass({
 	},
 
 	refresh: function(){
+		if (this.state.isUpdating == true){
+			alert('Your changes have been saved!');
+		}
+
 		this.setState({
-			currentUser: ProfileStore.getCurrentUser()
+			currentUser: ProfileStore.getCurrentUser(),
+			isUpdating: false
 		});
 
 		console.log('REFRESH: '+JSON.stringify(this.state.currentUser));
@@ -39,8 +45,12 @@ var Account = React.createClass({
 	finalizeChanges: function(event){
 		event.preventDefault();
 //		console.log('Finalize Changes: '+JSON.stringify(this.state.currentUser));
-		FetchServerActions.updateProfile(this.state.currentUser);
 
+		this.setState({
+			isUpdating: true
+		});
+
+		FetchServerActions.updateProfile(this.state.currentUser);
 	},
 
 	render: function(){
