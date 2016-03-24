@@ -4,6 +4,7 @@ var Sidebar = require('./components/Sidebar');
 var Footer = require('./components/Footer');
 var Register = require('./components/Register');
 var Home = require('./components/containers/Home');
+var Account = require('./components/containers/Account');
 
 var App = React.createClass({
 
@@ -12,7 +13,7 @@ var App = React.createClass({
 
 			<div>
 		        <Sidebar />
-		        <Home />
+		        <Account />
 		        <Footer /> 
 			</div>
 		);
