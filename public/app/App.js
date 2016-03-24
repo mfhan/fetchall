@@ -30,7 +30,7 @@ var App = React.createClass({
 	},
 
 	render: function(){
-		console.log('RENDER PAGE: '+this.state.page);
+//		console.log('RENDER PAGE: '+this.state.page);
 		var container = null;
 		if (this.state.page == 'home'){
 			container = <Home />

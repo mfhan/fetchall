@@ -37,6 +37,16 @@ function urlRequest(method, path, params) {
 
 module.exports = {
 
+	checkCurrentUser: function(){
+		urlRequest('get', '/account/currentuser', null)
+		.then(function(response){
+			console.log('CURRENT USER: '+JSON.stringify(response));
+		})
+		.catch(function(error){
+
+		});
+	},
+
 	register: function(profile){
 		console.log('API UTILS - Register: '+JSON.stringify(profile));
 		urlRequest('post', '/api/profile', profile)

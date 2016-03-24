@@ -9,8 +9,7 @@ module.exports = {
 	},
 
 	getCurrentUser: function(){
-		console.log('GET CURRENT USER: ');
-
+		APIUtils.checkCurrentUser();
 	}
 
 
