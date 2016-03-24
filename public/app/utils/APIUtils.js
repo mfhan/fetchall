@@ -32,10 +32,32 @@ function urlRequest(method, path, params) {
 
     	}
 
+    	if (method.toLowerCase() == 'put'){
+			superagent
+				.put(path)
+				.send(params)
+				.set('Accept', 'application/json')
+				.end(function(err, res){
+					if (err){ reject(err); }
+					else { resolve(res.body); }
+				});
+
+    	}
+
     });
 }
 
 module.exports = {
+
+	updateProfile: function(profile){
+		urlRequest('put', '/api/profile/'+profile.id, profile)
+		.then(function(response){
+			console.log('API UTILS - '+JSON.stringify(response));
+		})
+		.catch(function(error){
+
+		});
+	},
 
 	checkCurrentUser: function(){
 		urlRequest('get', '/account/currentuser', null)

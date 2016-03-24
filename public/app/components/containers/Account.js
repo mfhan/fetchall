@@ -4,7 +4,6 @@ var FetchServerActions = require('../../actions/FetchServerActions');
 var FetchClientActions = require('../../actions/FetchClientActions');
 
 
-
 var Account = React.createClass({
 	getInitialState: function(){
 		return {
@@ -39,7 +38,8 @@ var Account = React.createClass({
 
 	finalizeChanges: function(event){
 		event.preventDefault();
-		console.log('Finalize Changes: '+JSON.stringify(this.state.currentUser));
+//		console.log('Finalize Changes: '+JSON.stringify(this.state.currentUser));
+		FetchServerActions.updateProfile(this.state.currentUser);
 
 	},
 

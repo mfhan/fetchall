@@ -10,6 +10,11 @@ module.exports = {
 
 	getCurrentUser: function(){
 		APIUtils.checkCurrentUser();
+	},
+
+	updateProfile: function(profile){
+//		console.log('UPDATE PROFILE: '+JSON.stringify(profile));
+		APIUtils.updateProfile(profile);
 	}
 
 
