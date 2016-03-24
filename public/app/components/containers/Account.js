@@ -1,6 +1,8 @@
 var React = require('react');
 var ProfileStore = require('../../stores/ProfileStore');
 var FetchServerActions = require('../../actions/FetchServerActions');
+var FetchClientActions = require('../../actions/FetchClientActions');
+
 
 
 var Account = React.createClass({
@@ -21,6 +23,18 @@ var Account = React.createClass({
 		});
 
 		console.log('REFRESH: '+JSON.stringify(this.state.currentUser));
+	},
+
+	updateCurrentUser: function(event){
+		var updatedCurrentUser = {
+			id: this.state.currentUser.id,
+			firstName: this.state.currentUser.firstName,
+			lastName: this.state.currentUser.lastName,
+			email: this.state.currentUser.email
+		}
+
+		updatedCurrentUser[event.target.id] = event.target.value;
+		FetchClientActions.updateCurrentUser(updatedCurrentUser);
 	},
 
 	render: function(){
@@ -55,17 +69,17 @@ var Account = React.createClass({
 
 													<div className="col_full">
 														<label>First Name:</label>
-														<input type="text" id="login-form-username" name="login-form-username" value="" className="form-control" />
+														<input type="text" onChange={this.updateCurrentUser} id="firstName" name="login-form-username" value={this.state.currentUser.firstName} className="form-control" />
 													</div>
 
 													<div className="col_full">
 														<label>Last Name:</label>
-														<input type="text" id="login-form-username" name="login-form-username" value="" className="form-control" />
+														<input type="text" onChange={this.updateCurrentUser} id="lastName" name="login-form-username" value={this.state.currentUser.lastName} className="form-control" />
 													</div>
 
 													<div className="col_full">
 														<label>Password:</label>
-														<input type="password" id="login-form-password" name="login-form-password" value="" className="form-control" />
+														<input type="password" id="login-form-password" name="login-form-password" value={this.state.currentUser.password} className="form-control" />
 													</div>
 
 													<div className="col_full nobottommargin">
