@@ -9,24 +9,41 @@ var Account = require('./components/containers/Account');
 
 
 var App = React.createClass({
+	getInitialState: function(){
+		return {
+			page: null
+		}
+	},
+
 	componentWillMount: function(){
 		var path = window.location.pathname.replace('/', ''); // http://localhost:3000/
-		var page = 'home';
+		var currentPage = 'home';
 
 		if (path.length > 0){ // not a home page request
 			var parts = path.split('/');
-			page = parts[0];
+			currentPage = parts[0];
 		}
 
-		console.log('componentWillMount == '+page);
+		this.setState({
+			page: currentPage
+		});
 	},
 
 	render: function(){
+		console.log('RENDER PAGE: '+this.state.page);
+		var container = null;
+		if (this.state.page == 'home'){
+			container = <Home />
+		} 
+		else if (this.state.page == 'account'){
+			container = <Account />
+		}
+
 		return(
 
 			<div>
 		        <Sidebar />
-		        <Account />
+		        {container}
 		        <Footer /> 
 			</div>
 		);
