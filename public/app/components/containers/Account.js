@@ -8,12 +8,7 @@ var FetchClientActions = require('../../actions/FetchClientActions');
 var Account = React.createClass({
 	getInitialState: function(){
 		return {
-			currentOrder: {
-				id: null,
-				order: '',
-				address: '',
-				customer: ''
-			},
+			currentOrder: OrderStore.getCurrentOrder(),
 			currentUser: ProfileStore.getCurrentUser(),
 			isUpdating: false
 		}
@@ -21,6 +16,7 @@ var Account = React.createClass({
 
 	componentDidMount: function(){
 		ProfileStore.addChangeListener(this.refresh);
+		OrderStore.addChangeListener(this.refresh);
 		FetchServerActions.getCurrentUser();
 	},
 
@@ -31,6 +27,7 @@ var Account = React.createClass({
 
 		this.setState({
 			currentUser: ProfileStore.getCurrentUser(),
+			currentOrder: OrderStore.getCurrentOrder(),
 			isUpdating: false
 		});
 
@@ -71,13 +68,6 @@ var Account = React.createClass({
 
 		updatedCurrentOrder[event.target.id] = event.target.value;
 		FetchClientActions.updateCurrentOrder(updatedCurrentOrder);
-
-
-		// this.setState({
-		// 	currentOrder: updatedCurrentOrder
-		// });
-
-		// console.log(JSON.stringify(updatedCurrentOrder));
 	},
 
 	submitOrder: function(event){
