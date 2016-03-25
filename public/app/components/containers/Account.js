@@ -7,6 +7,12 @@ var FetchClientActions = require('../../actions/FetchClientActions');
 var Account = React.createClass({
 	getInitialState: function(){
 		return {
+			currentOrder: {
+				id: null,
+				order: '',
+				address: '',
+				customer: ''
+			},
 			currentUser: ProfileStore.getCurrentUser(),
 			isUpdating: false
 		}
@@ -51,6 +57,29 @@ var Account = React.createClass({
 		});
 
 		FetchServerActions.updateProfile(this.state.currentUser);
+	},
+
+	updateCurrentOrder: function(event){
+		event.preventDefault();
+		var updatedCurrentOrder = {
+			id: this.state.currentOrder.id,
+			order: this.state.currentOrder.order,
+			address: this.state.currentOrder.address,
+			customer: this.state.currentOrder.customer
+		}
+
+		updatedCurrentOrder[event.target.id] = event.target.value;
+		this.setState({
+			currentOrder: updatedCurrentOrder
+		});
+
+		console.log(JSON.stringify(updatedCurrentOrder));
+	},
+
+	submitOrder: function(event){
+		event.preventDefault();
+		console.log(JSON.stringify('SUBMIT ORDER: '+this.state.currentOrder));
+
 	},
 
 	render: function(){
@@ -119,16 +148,16 @@ var Account = React.createClass({
 
 													<div className="col_full">
 														<label>Order:</label>
-														<textarea className="form-control"></textarea>
+														<textarea onChange={this.updateCurrentOrder} id="order" className="form-control"></textarea>
 													</div>
 
 													<div className="col_full">
 														<label>Adddress:</label>
-														<input type="text" id="lastName" name="login-form-username" className="form-control" />
+														<input onChange={this.updateCurrentOrder} type="text" id="address" name="login-form-username" className="form-control" />
 													</div>
 
 													<div className="col_full nobottommargin">
-														<button className="button button-3d nomargin" id="login-form-submit" name="login-form-submit" value="update">Submit Order</button>
+														<button onClick={this.submitOrder} className="button button-3d nomargin" id="login-form-submit" name="login-form-submit" value="update">Submit Order</button>
 													</div>
 
 												</form>

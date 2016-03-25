@@ -2,8 +2,10 @@ var express = require('express');
 var router = express.Router();
 var Profile = require('../models/Profile');
 var ProfileController = require('../controllers/ProfileController');
+var OrderController = require('../controllers/OrderController');
 var controllers = {
-	'profile': ProfileController
+	'profile': ProfileController,
+	'order': OrderController
 }
 
 function createErrorResponse(msg){
