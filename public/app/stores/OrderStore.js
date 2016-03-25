@@ -38,6 +38,13 @@ OrderStore.dispatchToken = FetchDispatcher.register(function(action) {
       	OrderStore.emitChange();
 	}
 
+	if (action.type == FetchConstants.ORDER_CREATED){
+		console.log('ORDER_CREATED Notification Received!!');
+
+		// currentOrder = action.currentOrder;
+  //     	OrderStore.emitChange();
+	}
+
 
 });
 

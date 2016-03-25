@@ -101,10 +101,11 @@ module.exports = {
 		.then(function(response){
 			console.log(JSON.stringify(response));
 
-			// FetchDispatcher.dispatch({
-			// 	type: FetchConstants.USER_UPDATED,
-			// 	currentUser: response.result
-			// });
+			FetchDispatcher.dispatch({
+				type: FetchConstants.ORDER_CREATED,
+				order: response.result
+			});
+			
 		})
 		.catch(function(error){
 
