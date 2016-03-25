@@ -88,6 +88,11 @@ var Account = React.createClass({
 	},
 
 	render: function(){
+
+		var orderList = this.state.orders.map(function(order, i){
+			return  <tr><td>{i+1}</td><td>{order.order}</td><td>{order.address}</td><td>{order.status}</td></tr>;
+		});
+
 		return (
 			<div>
 		        <section id="content" style={{background: '#f9f9f9'}}>
@@ -183,24 +188,7 @@ var Account = React.createClass({
 											</tr>
 										  </thead>
 										  <tbody>
-											<tr>
-											  <td>1</td>
-											  <td>Mark</td>
-											  <td>Otto</td>
-											  <td>@mdo</td>
-											</tr>
-											<tr>
-											  <td>2</td>
-											  <td>Jacob</td>
-											  <td>Thornton</td>
-											  <td>@fat</td>
-											</tr>
-											<tr>
-											  <td>3</td>
-											  <td>Larry</td>
-											  <td>the Bird</td>
-											  <td>@twitter</td>
-											</tr>
+										  	  {orderList}
 										  </tbody>
 										</table>
 
