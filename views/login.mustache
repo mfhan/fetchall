@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>{{ title }}</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1>Login</h1>
+<html dir="ltr" lang="en-US">
+<head>
+    {{>head}}
+</head>
 
-    <form action="/account/login" method="post">
-    	<input type="text" name="email" placeholder="Email" /><br />
-    	<input type="text" name="password" placeholder="Password" /><br />
-    	<br />
-    	<button type="submit">Login</button>
-    </form>
-  </body>
+
+<body class="stretched side-header">
+
+    <div id="wrapper" class="clearfix">
+        <div id="app"></div>
+    </div>
+
+
+    {{>imports}}
+</body>
 </html>

@@ -88,6 +88,9 @@ var Register = React.createClass({
                 <div className="col_full nobottommargin">
                     <button onClick={this.register} className="btn btn-lg btn-success btn-block nomargin" value="submit">START FREE TRIAL</button>
                 </div>
+                <div className="col_full nobottommargin" style={{textAlign:'center', marginTop:24}}>
+                    <a href="/login">Log In</a>
+                </div>
             </form>
 
 		)

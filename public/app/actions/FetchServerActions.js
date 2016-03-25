@@ -8,9 +8,15 @@ module.exports = {
 		APIUtils.register(profile);
 	},
 
+	login: function(profile){
+		APIUtils.login(profile);
+
+	},
+
 	getCurrentUser: function(){
 		APIUtils.checkCurrentUser();
 	},
+
 
 	updateProfile: function(profile){
 		APIUtils.updateProfile(profile);

@@ -10,10 +10,10 @@ var Sidebar = React.createClass({
 	                <div className="container clearfix">
 	                    <div id="primary-menu-trigger"><i className="icon-reorder"></i></div>
 	                    <div id="logo" className="nobottomborder">
-	                        <a href="index.html" className="standard-logo" data-dark-logo="images/logo-side-dark.png">
+	                        <a href="/" className="standard-logo" data-dark-logo="images/logo-side-dark.png">
 	                        	<img src="images/logo-side.png" alt="Canvas Logo" />
 	                        </a>
-	                        <a href="index.html" className="retina-logo" data-dark-logo="images/logo-side-dark@2x.png">
+	                        <a href="/" className="retina-logo" data-dark-logo="images/logo-side-dark@2x.png">
 	                        	<img src="images/logo-side@2x.png" alt="Canvas Logo" />
 	                        </a>
 	                    </div>
@@ -21,7 +21,7 @@ var Sidebar = React.createClass({
 	                    <nav id="primary-menu">
 	                        <ul>
 	                            <li>
-	                                <a href="index.html"><div>Home</div></a>
+	                                <a href="/"><div>Home</div></a>
 	                            </li>
 	                            <li>
 	                                <a href="index.html"><div>About</div></a>

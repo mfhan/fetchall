@@ -96,6 +96,26 @@ module.exports = {
 		});
 	},
 
+	login: function(profile){
+		urlRequest('post', '/account/login', profile)
+		.then(function(response){
+			console.log('API UTILS - LOGIN: '+JSON.stringify(response));
+
+			if (response.confirmation != 'success'){
+				alert(response.message);
+				return;
+			}
+
+			FetchDispatcher.dispatch({
+				type: FetchConstants.USER_UPDATED,
+				currentUser: response.profile
+			});
+		})
+		.catch(function(error){
+
+		});
+	},
+
 	createOrder: function(order){
 		urlRequest('post', '/api/order', order)
 		.then(function(response){

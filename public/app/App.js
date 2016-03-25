@@ -5,7 +5,7 @@ var Footer = require('./components/Footer');
 var Register = require('./components/Register');
 var Home = require('./components/containers/Home');
 var Account = require('./components/containers/Account');
-
+var Login = require('./components/containers/Login');
 
 
 var App = React.createClass({
@@ -37,6 +37,9 @@ var App = React.createClass({
 		} 
 		else if (this.state.page == 'account'){
 			container = <Account />
+		}
+		else if (this.state.page == 'login'){
+			container = <Login />
 		}
 
 		return(
