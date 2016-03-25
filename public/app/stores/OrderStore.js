@@ -11,6 +11,10 @@ var currentOrder = {
 	customer: ''
 }
 
+var orders = {
+
+}
+
 var OrderStore = assign({}, EventEmitter.prototype, {
 	emitChange: function() {
 	    this.emit(FetchConstants.CHANGE_EVENT);
@@ -39,13 +43,20 @@ OrderStore.dispatchToken = FetchDispatcher.register(function(action) {
 	}
 
 	if (action.type == FetchConstants.ORDER_CREATED){
-		console.log('ORDER_CREATED Notification Received!!');
 
-		// currentOrder = action.currentOrder;
-  //     	OrderStore.emitChange();
+		currentOrder = {
+			id: null,
+			order: '',
+			address: '',
+			customer: ''
+		}
+
+		orders[action.order.id] = action.order;
+		console.log('ORDER_CREATED Notification Received: '+JSON.stringify(orders));
+
+
+     	OrderStore.emitChange();
 	}
-
-
 });
 
 
