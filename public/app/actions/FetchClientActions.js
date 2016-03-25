@@ -9,8 +9,18 @@ module.exports = {
 			type: FetchConstants.USER_UPDATED,
 			currentUser: updatedUser
 		});
+	},
+
+	updateCurrentOrder: function(updatedOrder){
+//		console.log('UPDATE CURRENT ORDER: '+JSON.stringify(updatedOrder));
+
+		FetchDispatcher.dispatch({
+			type: FetchConstants.CURRENT_ORDER_UPDATED,
+			currentOrder: updatedOrder
+		});
 
 
 	}
+
 
 }

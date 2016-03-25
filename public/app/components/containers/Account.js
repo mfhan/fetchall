@@ -1,5 +1,6 @@
 var React = require('react');
 var ProfileStore = require('../../stores/ProfileStore');
+var OrderStore = require('../../stores/OrderStore');
 var FetchServerActions = require('../../actions/FetchServerActions');
 var FetchClientActions = require('../../actions/FetchClientActions');
 
@@ -69,11 +70,14 @@ var Account = React.createClass({
 		}
 
 		updatedCurrentOrder[event.target.id] = event.target.value;
-		this.setState({
-			currentOrder: updatedCurrentOrder
-		});
+		FetchClientActions.updateCurrentOrder(updatedCurrentOrder);
 
-		console.log(JSON.stringify(updatedCurrentOrder));
+
+		// this.setState({
+		// 	currentOrder: updatedCurrentOrder
+		// });
+
+		// console.log(JSON.stringify(updatedCurrentOrder));
 	},
 
 	submitOrder: function(event){
