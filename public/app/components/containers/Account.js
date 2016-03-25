@@ -65,7 +65,7 @@ var Account = React.createClass({
 			id: this.state.currentOrder.id,
 			order: this.state.currentOrder.order,
 			address: this.state.currentOrder.address,
-			customer: this.state.currentOrder.customer
+			customer: this.state.currentUser.id
 		}
 
 		updatedCurrentOrder[event.target.id] = event.target.value;
