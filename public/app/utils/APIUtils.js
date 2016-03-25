@@ -94,6 +94,21 @@ module.exports = {
 		.catch(function(error){
 
 		});
+	},
+
+	createOrder: function(order){
+		urlRequest('post', '/api/order', order)
+		.then(function(response){
+			console.log(JSON.stringify(response));
+
+			// FetchDispatcher.dispatch({
+			// 	type: FetchConstants.USER_UPDATED,
+			// 	currentUser: response.result
+			// });
+		})
+		.catch(function(error){
+
+		});
 
 	}
 

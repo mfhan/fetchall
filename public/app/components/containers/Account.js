@@ -72,8 +72,8 @@ var Account = React.createClass({
 
 	submitOrder: function(event){
 		event.preventDefault();
-		console.log('SUBMIT ORDER: '+JSON.stringify(this.state.currentOrder));
-
+//		console.log('SUBMIT ORDER: '+JSON.stringify(this.state.currentOrder));
+		FetchServerActions.submitOrder(this.state.currentOrder);
 	},
 
 	render: function(){
