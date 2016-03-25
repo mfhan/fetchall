@@ -11,9 +11,7 @@ var currentOrder = {
 	customer: ''
 }
 
-var orders = {
-
-}
+var orders = { }
 
 var OrderStore = assign({}, EventEmitter.prototype, {
 	emitChange: function() {
@@ -31,6 +29,23 @@ var OrderStore = assign({}, EventEmitter.prototype, {
 
 	getCurrentOrder: function(){
 		return currentOrder;
+	},
+
+	getOrders: function(format){
+		if (format == null)
+			return orders;
+
+		if (format == 'array'){
+			var array = [];
+			var keys = Object.keys(orders);
+			for (var i=0; i<keys.length; i++){
+				var key = keys[i];
+				array.push(orders[key]);
+			}
+
+			return array;
+		}
+
 	}
 
 });

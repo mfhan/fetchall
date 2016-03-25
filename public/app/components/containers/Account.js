@@ -10,7 +10,9 @@ var Account = React.createClass({
 		return {
 			currentOrder: OrderStore.getCurrentOrder(),
 			currentUser: ProfileStore.getCurrentUser(),
-			isUpdating: false
+			orders: OrderStore.getOrders('array'),
+			isUpdating: false,
+			isOrdering: false
 		}
 	},
 
@@ -25,10 +27,16 @@ var Account = React.createClass({
 			alert('Your changes have been saved!');
 		}
 
+		if (this.state.isOrdering == true){
+			alert('Thank For Ordering! It\'s on the way!');
+		}
+
 		this.setState({
 			currentUser: ProfileStore.getCurrentUser(),
 			currentOrder: OrderStore.getCurrentOrder(),
-			isUpdating: false
+			orders: OrderStore.getOrders('array'),
+			isUpdating: false,
+			isOrdering: false
 		});
 
 		console.log('REFRESH: '+JSON.stringify(this.state.currentUser));
@@ -72,7 +80,10 @@ var Account = React.createClass({
 
 	submitOrder: function(event){
 		event.preventDefault();
-//		console.log('SUBMIT ORDER: '+JSON.stringify(this.state.currentOrder));
+		this.setState({
+			isOrdering: true
+		});
+
 		FetchServerActions.submitOrder(this.state.currentOrder);
 	},
 
@@ -91,7 +102,7 @@ var Account = React.createClass({
 									<li><a href="#tabs-6">Account</a></li>
 									<li><a href="#tabs-7">Place Order</a></li>
 									<li className="hidden-phone">
-										<a href="#tabs-8">Order History</a>
+										<a href="#tabs-8">Your Orders</a>
 									</li>
 								</ul>
 
@@ -142,12 +153,12 @@ var Account = React.createClass({
 
 													<div className="col_full">
 														<label>Order:</label>
-														<textarea onChange={this.updateCurrentOrder} id="order" className="form-control"></textarea>
+														<textarea onChange={this.updateCurrentOrder} id="order" className="form-control" value={this.state.currentOrder.order}></textarea>
 													</div>
 
 													<div className="col_full">
 														<label>Adddress:</label>
-														<input onChange={this.updateCurrentOrder} type="text" id="address" name="login-form-username" className="form-control" />
+														<input onChange={this.updateCurrentOrder} value={this.state.currentOrder.address} type="text" id="address" name="login-form-username" className="form-control" />
 													</div>
 
 													<div className="col_full nobottommargin">
@@ -161,7 +172,38 @@ var Account = React.createClass({
 
 									</div>
 									<div className="tab-content clearfix" id="tabs-8">
-										Praesent in eros vestibulum mi adipiscing adipiscing. Morbi facilisis. Curabitur ornare consequat nunc. Aenean vel metus. Ut posuere viverra nulla. Aliquam erat volutpat. Pellentesque convallis. Maecenas feugiat, tellus pellentesque pretium posuere, felis lorem euismod felis, eu ornare leo nisi vel felis. Mauris consectetur tortor et purus.
+
+										<table className="table">
+										  <thead>
+											<tr>
+											  <th>#</th>
+											  <th>Order</th>
+											  <th>Adddress</th>
+											  <th>Status</th>
+											</tr>
+										  </thead>
+										  <tbody>
+											<tr>
+											  <td>1</td>
+											  <td>Mark</td>
+											  <td>Otto</td>
+											  <td>@mdo</td>
+											</tr>
+											<tr>
+											  <td>2</td>
+											  <td>Jacob</td>
+											  <td>Thornton</td>
+											  <td>@fat</td>
+											</tr>
+											<tr>
+											  <td>3</td>
+											  <td>Larry</td>
+											  <td>the Bird</td>
+											  <td>@twitter</td>
+											</tr>
+										  </tbody>
+										</table>
+
 									</div>
 
 								</div>
