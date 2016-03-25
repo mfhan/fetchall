@@ -110,8 +110,23 @@ module.exports = {
 		.catch(function(error){
 
 		});
+	},
 
+	getOrders: function(params){
+		urlRequest('get', '/api/order', params)
+		.then(function(response){
+			FetchDispatcher.dispatch({
+				type: FetchConstants.ORDERS_RECEIVED,
+				orders: response.results
+			});
+
+		})
+		.catch(function(error){
+
+		});
 	}
+
+
 
 }
 

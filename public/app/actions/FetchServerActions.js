@@ -19,8 +19,12 @@ module.exports = {
 	submitOrder: function(order){
 		// console.log('FETCH SERVER ACTIONS - SUBMIT ORDER: '+JSON.stringify(order));
 		APIUtils.createOrder(order);
+	},
 
-	}
+	fetchOrders: function(params){
+		APIUtils.getOrders(params);
+	},
+
 
 
 }

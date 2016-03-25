@@ -40,6 +40,14 @@ var Account = React.createClass({
 		});
 
 		console.log('REFRESH: '+JSON.stringify(this.state.currentUser));
+		if (this.state.currentUser.id == null)
+			return;
+		
+		if (this.state.orders == null){
+			FetchServerActions.fetchOrders({
+				customer: this.state.currentUser.id
+			});
+		}
 	},
 
 	updateCurrentUser: function(event){
@@ -89,9 +97,14 @@ var Account = React.createClass({
 
 	render: function(){
 
-		var orderList = this.state.orders.map(function(order, i){
-			return  <tr><td>{i+1}</td><td>{order.order}</td><td>{order.address}</td><td>{order.status}</td></tr>;
-		});
+		var orderList = null;
+		if (this.state.orders != null){
+			orderList = this.state.orders.map(function(order, i){
+				return  <tr><td>{i+1}</td><td>{order.order}</td><td>{order.address}</td><td>{order.status}</td></tr>;
+			});
+
+		}
+
 
 		return (
 			<div>

@@ -11,7 +11,7 @@ var currentOrder = {
 	customer: ''
 }
 
-var orders = { }
+var orders = null;
 
 var OrderStore = assign({}, EventEmitter.prototype, {
 	emitChange: function() {
@@ -32,6 +32,9 @@ var OrderStore = assign({}, EventEmitter.prototype, {
 	},
 
 	getOrders: function(format){
+		if (orders == null)
+			return orders;
+
 		if (format == null)
 			return orders;
 
@@ -57,6 +60,21 @@ OrderStore.dispatchToken = FetchDispatcher.register(function(action) {
       	OrderStore.emitChange();
 	}
 
+	if (action.type == FetchConstants.ORDERS_RECEIVED){
+		console.log('FetchDispatcher - ORDERS_RECEIVED');
+		var list = action.orders;
+
+		if (orders == null)
+			orders = {}
+
+		for (var i=0; i<list.length; i++){
+			var order = list[i];
+			orders[order.id] = order;
+		}
+
+     	OrderStore.emitChange();
+	}
+
 	if (action.type == FetchConstants.ORDER_CREATED){
 
 		currentOrder = {
@@ -66,9 +84,11 @@ OrderStore.dispatchToken = FetchDispatcher.register(function(action) {
 			customer: ''
 		}
 
+		if (orders == null)
+			orders = {}
+		
 		orders[action.order.id] = action.order;
 		console.log('ORDER_CREATED Notification Received: '+JSON.stringify(orders));
-
 
      	OrderStore.emitChange();
 	}
