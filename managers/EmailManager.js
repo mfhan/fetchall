@@ -5,8 +5,8 @@ module.exports = {
 		var sendgrid  = require('sendgrid')(process.env.SENDGRID_USERNAME, process.env.SENDGRID_PASSWORD);
 
 		sendgrid.send({
-			to:       sender,
-			from:     recipient,
+			to:       recipient,
+			from:     sender,
 			subject:  subject,
 			text:     text
 		}, function(err, json) {

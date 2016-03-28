@@ -54,18 +54,6 @@ module.exports = {
 			}
 
 			EmailManager.sendEmail('info@thegridmedia.com', 'dan.kwon234@gmail.com', 'Email Manager TEST', JSON.stringify(order.summary()), null);
-
-			// var sendgrid  = require('sendgrid')(process.env.SENDGRID_USERNAME, process.env.SENDGRID_PASSWORD);
-			// sendgrid.send({
-			// 	to:       'dan.kwon234@gmail.com',
-			// 	from:     'info@thegridmedia.com',
-			// 	subject:  'New Order Notification!',
-			// 	text:     JSON.stringify(order.summary())
-			// }, function(err, json) {
-			// 	if (err) { }
-
-			// });
-
 			completion(null, order.summary());
 		});
 	},
