@@ -15,6 +15,7 @@ var Orders = React.createClass({
 
 	componentDidMount: function(){
 		ProfileStore.addChangeListener(this.refreshCurrentUser);
+		OrderStore.addChangeListener(this.refreshOrders);
 		FetchServerActions.getCurrentUser();
 	},
 
@@ -32,10 +33,26 @@ var Orders = React.createClass({
 			return;
 		}
 
-		
+		FetchServerActions.fetchOrders();
 	},
 
+	refreshOrders: function(){
+		this.setState({
+			orders: OrderStore.getOrders('array')
+		});
+	},
+
+
+
 	render: function(){
+		var orderList = null;
+		if (this.state.orders != null){
+			orderList = this.state.orders.map(function(order, i){
+				return  <tr><td>{i+1}</td><td>{order.order}</td><td>{order.address}</td><td>{order.status}</td></tr>;
+			});
+
+		}
+
 		return (
 			<div className="container">
 				<h1>Welcome {this.state.currentUser.firstName}</h1>
@@ -49,12 +66,7 @@ var Orders = React.createClass({
 					</tr>
 				  </thead>
 				  <tbody>
-					<tr>
-					  <td>1</td>
-					  <td>Food</td>
-					  <td>123 Main Street</td>
-					  <td>Pending</td>
-					</tr>
+				  	{orderList}
 				  </tbody>
 				</table>
 			</div>
