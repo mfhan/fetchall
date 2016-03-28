@@ -43,6 +43,32 @@ router.get('/:resource/:id', function(req, res, next) {
 router.get('/:resource', function(req, res, next) {
 	var resource = req.params.resource;
 
+	if (resource == 'email'){
+		var sendgrid  = require('sendgrid')(process.env.SENDGRID_USERNAME, process.env.SENDGRID_PASSWORD);
+		sendgrid.send({
+			to:       'dan.kwon234@gmail.com',
+			from:     'info@thegridmedia.com',
+			subject:  'Hello World',
+			text:     'My first email through SendGrid.'
+		}, function(err, json) {
+			if (err) { 
+			    res.json(createErrorResponse(err));
+			    return; 
+			}
+
+			res.json({
+				confirmation:'success',
+				json:json
+			});
+
+//			console.log(json);
+			return;
+
+		});
+
+		return;
+	}
+
 	var controller = controllers[resource];
 	if (controller == null){
 		res.json(createErrorResponse('Invalid RESOURCE!'));

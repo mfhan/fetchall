@@ -21,6 +21,7 @@
     "object-assign": "^4.0.1",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
+    "sendgrid": "^2.0.0",
     "serve-favicon": "~2.3.0",
     "superagent": "^1.8.2"
   },
