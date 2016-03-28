@@ -20,7 +20,7 @@ var Register = React.createClass({
 			visitor: ProfileStore.getCurrentUser()
 		});
 
-		console.log('UPDATED VISITOR: '+JSON.stringify(this.state.visitor));
+//		console.log('REFRESH: '+JSON.stringify(this.state.visitor));
 		if (this.state.visitor.id == null)
 			return;
 
@@ -33,17 +33,18 @@ var Register = React.createClass({
 		var updatedVisitor = {
 			id: this.state.visitor.id,
 			name: this.state.visitor.name,
+			type: this.state.visitor.type,
 			email: this.state.visitor.email,
 			password: this.state.visitor.password
 		}
 
 		updatedVisitor[event.target.id] = event.target.value;
+		console.log('UPDATE VISITOR: '+JSON.stringify(updatedVisitor));
 		FetchClientActions.updateCurrentUser(updatedVisitor);
-//		console.log(JSON.stringify(updatedVisitor));
 	},
 
 	register: function(event){
-//		console.log('Register: ' + JSON.stringify(this.state.visitor));
+		console.log('Register: ' + JSON.stringify(this.state.visitor));
 		event.preventDefault();
 		if (this.state.visitor.name == null){
 			alert('Please Enter Your Name.');
@@ -84,6 +85,12 @@ var Register = React.createClass({
                 </div>
                 <div className="col_full">
                     <input onChange={this.updateVisitor} id="password" type="password" className="form-control input-lg not-dark" placeholder="Choose Password" />
+                </div>
+                <div className="col_full">
+                    <select onChange={this.updateVisitor} id="type" className="form-control" style={{background:'#fff'}}>
+                    	<option value="customer">Customer</option>
+                    	<option value="fetcher">Fetcher</option>
+                    </select>
                 </div>
                 <div className="col_full nobottommargin">
                     <button onClick={this.register} className="btn btn-lg btn-success btn-block nomargin" value="submit">START FREE TRIAL</button>

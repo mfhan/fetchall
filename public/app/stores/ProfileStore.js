@@ -9,6 +9,7 @@ var currentUser = {
 	firstName: '',
 	lastName: '',
 	email: '',
+	type: 'customer',
 	password: ''
 }
 
@@ -48,6 +49,7 @@ ProfileStore.dispatchToken = FetchDispatcher.register(function(action) {
 		}
 
 		currentUser = updatedUser;
+//		console.log('USER_UPDATED CALLBACK: '+JSON.stringify(currentUser));
       	ProfileStore.emitChange();
 	}
 
