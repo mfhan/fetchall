@@ -31,6 +31,12 @@ module.exports = {
 		APIUtils.getOrders(params);
 	},
 
+	updateOrder: function(orderId, params){
+		// console.log('UPDATE ORDER - '+orderId+': '+JSON.stringify(params));
+		APIUtils.updateOrder(orderId, params);
+
+	}
+
 
 
 }

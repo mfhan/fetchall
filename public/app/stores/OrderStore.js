@@ -76,7 +76,6 @@ OrderStore.dispatchToken = FetchDispatcher.register(function(action) {
 	}
 
 	if (action.type == FetchConstants.ORDER_CREATED){
-
 		currentOrder = {
 			id: null,
 			order: '',
@@ -92,6 +91,17 @@ OrderStore.dispatchToken = FetchDispatcher.register(function(action) {
 
      	OrderStore.emitChange();
 	}
+
+	if (action.type == FetchConstants.ORDER_UPDATED){
+		if (orders == null)
+			orders = {}
+
+		var updatedOrder = action.updatedOrder;
+		orders[updatedOrder.id] = updatedOrder;
+     	OrderStore.emitChange();
+	}
+
+
 });
 
 

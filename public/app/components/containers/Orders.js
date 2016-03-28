@@ -43,12 +43,31 @@ var Orders = React.createClass({
 	},
 
 
+	claimOrder: function(event){
+		var order = this.state.orders[event.target.id];
+		if (order.fetcher.length > 0){
+			alert('This order was already claimed. Sorry!');
+			return;
+		}
+
+		console.log('Claim Order: '+JSON.stringify(order));
+
+		FetchServerActions.updateOrder(order.id, {fetcher: this.state.currentUser.id});
+	},
 
 	render: function(){
 		var orderList = null;
+		var _this = this;
 		if (this.state.orders != null){
 			orderList = this.state.orders.map(function(order, i){
-				return  <tr><td>{i+1}</td><td>{order.order}</td><td>{order.address}</td><td>{order.status}</td></tr>;
+				var row = null;
+				if (order.fetcher.length > 0){
+					row = <tr key={i}><td>{i+1}</td><td>{order.order}</td><td>{order.address}</td><td>{order.status}</td><td><button onClick={_this.claimOrder} id={i} className="btn btn-danger">Claimed</button></td></tr>;
+				}
+				else {
+					row = <tr key={i}><td>{i+1}</td><td>{order.order}</td><td>{order.address}</td><td>{order.status}</td><td><button onClick={_this.claimOrder} id={i} className="btn btn-success">Claim</button></td></tr>;
+				}
+				return row;
 			});
 
 		}
@@ -63,6 +82,7 @@ var Orders = React.createClass({
 					  <th>Order</th>
 					  <th>Adddress</th>
 					  <th>Status</th>
+					  <th>&nbsp;</th>
 					</tr>
 				  </thead>
 				  <tbody>

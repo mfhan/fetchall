@@ -144,6 +144,23 @@ module.exports = {
 		.catch(function(error){
 
 		});
+	},
+
+	updateOrder: function(orderId, params){
+		urlRequest('put', '/api/order/'+orderId, params)
+		.then(function(response){
+			console.log('API UTILS - '+JSON.stringify(response));
+
+			FetchDispatcher.dispatch({
+				type: FetchConstants.ORDER_UPDATED,
+				updatedOrder: response.result
+			});
+			
+		})
+		.catch(function(error){
+
+		});
+
 	}
 
 

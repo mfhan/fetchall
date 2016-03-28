@@ -5,7 +5,7 @@ var OrderSchema = new mongoose.Schema({
 	venue: {type:String, trim:true, lowercase:true, default:''},
 	address: {type:String, trim:true, lowercase:true, default:''},
 	status: {type:String, trim:true, lowercase:true, default:'pending'},
-	fetcher: {type:String, trim:true, lowercase:true, default:'mauricio'},
+	fetcher: {type:String, trim:true, lowercase:true, default:''},
 	customer: {type:String, trim:true, lowercase:true, default:''},
 	cost: {type:Number, default:0},
 	timeplaced: {type:Date, default: Date.now},
