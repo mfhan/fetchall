@@ -4,6 +4,7 @@ var Sidebar = require('./components/Sidebar');
 var Footer = require('./components/Footer');
 var Register = require('./components/Register');
 var Home = require('./components/containers/Home');
+var Orders = require('./components/containers/Orders');
 var Account = require('./components/containers/Account');
 var Login = require('./components/containers/Login');
 
@@ -40,6 +41,9 @@ var App = React.createClass({
 		}
 		else if (this.state.page == 'login'){
 			container = <Login />
+		}
+		else if (this.state.page == 'orders'){
+			container = <Orders />
 		}
 
 		return(
