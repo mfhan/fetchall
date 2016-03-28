@@ -66,21 +66,10 @@ module.exports = {
 			    return;
 			}
 
-			if (params['fetcher'] != null){
-				var sendgrid  = require('sendgrid')(process.env.SENDGRID_USERNAME, process.env.SENDGRID_PASSWORD);
-				sendgrid.send({
-					to:       'dan.kwon234@gmail.com',
-					from:     'info@thegridmedia.com',
-					subject:  'Your Order Has been Claimed!',
-					text:     JSON.stringify(order.summary())
-				}, function(err, json) {
-					if (err) { }
-
-				});
-			}
-
-
-
+			// delivery person is claiming an order:
+			if (params['fetcher'] != null)
+				EmailManager.sendEmail('info@thegridmedia.com', 'dan.kwon234@gmail.com', 'Your Order Has been Claimed.', JSON.stringify(order.summary()), null);
+			
 			completion(null, order.summary());
 		});
 	}
