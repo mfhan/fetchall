@@ -61,12 +61,13 @@ var Orders = React.createClass({
 		if (this.state.orders != null){
 			orderList = this.state.orders.map(function(order, i){
 				var row = null;
-				if (order.fetcher.length > 0){
+				if (order.fetcher.length > 0){ // this order is claimed
 					row = <tr key={i}><td>{i+1}</td><td>{order.order}</td><td>{order.address}</td><td>{order.status}</td><td><button onClick={_this.claimOrder} id={i} className="btn btn-danger">Claimed</button></td></tr>;
 				}
 				else {
 					row = <tr key={i}><td>{i+1}</td><td>{order.order}</td><td>{order.address}</td><td>{order.status}</td><td><button onClick={_this.claimOrder} id={i} className="btn btn-success">Claim</button></td></tr>;
 				}
+
 				return row;
 			});
 
