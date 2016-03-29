@@ -170,7 +170,7 @@ var Account = React.createClass({
 													<h3>Place Your Order</h3>
 
 													<div className="col_full">
-														<label>Order:</label>
+														<label>Order Here:</label>
 														<textarea onChange={this.updateCurrentOrder} id="order" className="form-control" value={this.state.currentOrder.order}></textarea>
 													</div>
 
