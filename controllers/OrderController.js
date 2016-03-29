@@ -78,8 +78,7 @@ module.exports = {
 
 					EmailManager.sendBatchEmail('info@thegridmedia.com', recipients, 'Order Notification', html, null);
 				});
-				
-				// EmailManager.sendBatchEmail('info@thegridmedia.com', recipients, 'Order Notification', html, null);
+
 			});
 
 			completion(null, order.summary());
