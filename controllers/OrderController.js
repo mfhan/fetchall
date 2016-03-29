@@ -55,17 +55,10 @@ module.exports = {
 
 			var path = 'public/email/email.html';
 			fs.readFile(path, 'utf8', function (err, data) {
-				if (err) {
+				if (err) { }
 
-				}
-
-				console.log(data);
+				EmailManager.sendEmail('info@thegridmedia.com', 'dan.kwon234@gmail.com', 'Order Notification', data, null);
 			});
-
-
-			// var orderSummary = order.summary;
-			// var emailText = 'The following order has been placed: '+orderSummary['order']+'<br />Address: '+orderSummary['address'];
-			// EmailManager.sendEmail('info@thegridmedia.com', 'dan.kwon234@gmail.com', 'Order Notification', emailText, null);
 
 			completion(null, order.summary());
 		});
