@@ -61,7 +61,7 @@ var Home = React.createClass({
 		                            <div className="fbox-icon">
 		                                <a href="#"><i className="icon-beaker i-alt"></i></a>
 		                            </div>
-		                            <h3>Powerful Performance</h3>
+		                            <h3>Performance</h3>
 		                            <p>Canvas includes tons of optimized code that are completely customizable and deliver unmatched fast performance.</p>
 		                        </div>
 		                    </div>
