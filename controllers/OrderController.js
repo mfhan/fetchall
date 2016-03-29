@@ -94,8 +94,25 @@ module.exports = {
 			}
 
 			// delivery person is claiming an order:
-			if (params['fetcher'] != null)
-				EmailManager.sendEmail('info@thegridmedia.com', 'dan.kwon234@gmail.com', 'Your Order Has been Claimed.', JSON.stringify(order.summary()), null);
+			if (params['fetcher'] != null){
+				var path = 'public/email/customernotification.html';
+
+				fs.readFile(path, 'utf8', function (err, data) {
+					if (err) { }
+
+					var orderSummary = order.summary();
+					var html = data;
+
+					ProfileController.getById(order.customer, function(err, profile){
+						if (err){
+
+						}
+
+						EmailManager.sendEmail('info@thegridmedia.com', profile.email, 'Your Order Has been Claimed.', html, null);
+					});
+				});
+
+			}
 			
 			completion(null, order.summary());
 		});
