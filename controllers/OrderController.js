@@ -55,9 +55,13 @@ module.exports = {
 
 			var path = 'public/email/email.html';
 			fs.readFile(path, 'utf8', function (err, data) {
-				if (err) { }
+				if (err) { 
+				}
 
-				EmailManager.sendEmail('info@thegridmedia.com', 'dan.kwon234@gmail.com', 'Order Notification', data, null);
+				var orderSummary = order.summary();
+				var html = data;
+				html = html.replace('{{address}}', orderSummary['address']);
+				EmailManager.sendEmail('info@thegridmedia.com', 'dan.kwon234@gmail.com', 'Order Notification', html, null);
 			});
 
 			completion(null, order.summary());
