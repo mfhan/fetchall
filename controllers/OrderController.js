@@ -1,6 +1,8 @@
 var Order = require('../models/Order');
 var EmailManager = require('../managers/EmailManager');
+var ProfileController = require('../controllers/ProfileController');
 var fs = require('fs');
+
 
 module.exports = {
 
@@ -62,7 +64,22 @@ module.exports = {
 				var html = data;
 				html = html.replace('{{address}}', orderSummary['address']);
 				html = html.replace('{{order}}', orderSummary['order']);
-				EmailManager.sendEmail('info@thegridmedia.com', 'dan.kwon234@gmail.com', 'Order Notification', html, null);
+
+				ProfileController.get({type:'fetcher'}, false, function(err, results){
+					if (err){
+
+					}
+
+					var recipients = [];
+					for (var i=0; i<results.length; i++){
+						var fetcher = results[i];
+						recipients.push(fetcher.email);
+					}
+
+					EmailManager.sendBatchEmail('info@thegridmedia.com', recipients, 'Order Notification', html, null);
+				});
+				
+				// EmailManager.sendBatchEmail('info@thegridmedia.com', recipients, 'Order Notification', html, null);
 			});
 
 			completion(null, order.summary());
