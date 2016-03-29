@@ -76,7 +76,7 @@ var Login = React.createClass({
 											</div>
 
 											<div className="col_full nobottommargin center">
-												<button onClick={this.login} className="button button-3d button-black nomargin" id="login-form-submit" name="login-form-submit" value="login">Login</button>
+												<button onClick={this.login} className="button button-3d button-red nomargin" id="login-form-submit" name="login-form-submit" value="login">Login</button>
 											</div>
 										</form>
 
