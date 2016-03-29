@@ -8,7 +8,7 @@ module.exports = {
 			to:       recipient,
 			from:     sender,
 			subject:  subject,
-			text:     text
+			html:     text
 		}, function(err, json) {
 			if (err) { 
 				if (completion != null){

@@ -53,7 +53,10 @@ module.exports = {
 			    return;
 			}
 
-			EmailManager.sendEmail('info@thegridmedia.com', 'dan.kwon234@gmail.com', 'Email Manager TEST', JSON.stringify(order.summary()), null);
+			var orderSummary = order.summary;
+			var emailText = 'The following order has been placed: '+orderSummary['order']+'<br />Address: '+order['address'];
+
+			EmailManager.sendEmail('info@thegridmedia.com', 'dan.kwon234@gmail.com', 'Order Notification', emailText, null);
 			completion(null, order.summary());
 		});
 	},
