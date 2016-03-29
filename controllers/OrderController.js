@@ -102,6 +102,7 @@ module.exports = {
 
 					var orderSummary = order.summary();
 					var html = data;
+					html = html.replace('{{order}}', order.order);
 
 					ProfileController.getById(order.customer, function(err, profile){
 						if (err){
