@@ -3,7 +3,6 @@ var ProfileStore = require('../../stores/ProfileStore');
 var OrderStore = require('../../stores/OrderStore');
 var FetchServerActions = require('../../actions/FetchServerActions');
 
-
 var Orders = React.createClass({
 
 	getInitialState: function(){
@@ -23,6 +22,7 @@ var Orders = React.createClass({
 		this.setState({
 			currentUser: ProfileStore.getCurrentUser()
 		});
+
 
 		console.log('REFRESH: '+JSON.stringify(this.state.currentUser));
 		if (this.state.currentUser.id == null)
