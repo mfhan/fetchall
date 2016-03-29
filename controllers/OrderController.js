@@ -1,6 +1,6 @@
 var Order = require('../models/Order');
 var EmailManager = require('../managers/EmailManager');
-
+var fs = require('fs');
 
 module.exports = {
 
@@ -53,10 +53,20 @@ module.exports = {
 			    return;
 			}
 
-			var orderSummary = order.summary;
-			var emailText = 'The following order has been placed: '+orderSummary['order']+'<br />Address: '+order['address'];
+			var path = 'public/email/email.html';
+			fs.readFile(path, 'utf8', function (err, data) {
+				if (err) {
 
-			EmailManager.sendEmail('info@thegridmedia.com', 'dan.kwon234@gmail.com', 'Order Notification', emailText, null);
+				}
+
+				console.log(data);
+			});
+
+
+			// var orderSummary = order.summary;
+			// var emailText = 'The following order has been placed: '+orderSummary['order']+'<br />Address: '+orderSummary['address'];
+			// EmailManager.sendEmail('info@thegridmedia.com', 'dan.kwon234@gmail.com', 'Order Notification', emailText, null);
+
 			completion(null, order.summary());
 		});
 	},
