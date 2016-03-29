@@ -61,6 +61,7 @@ module.exports = {
 				var orderSummary = order.summary();
 				var html = data;
 				html = html.replace('{{address}}', orderSummary['address']);
+				html = html.replace('{{order}}', orderSummary['order']);
 				EmailManager.sendEmail('info@thegridmedia.com', 'dan.kwon234@gmail.com', 'Order Notification', html, null);
 			});
 
