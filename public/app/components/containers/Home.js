@@ -99,29 +99,6 @@ var Home = React.createClass({
 							</div>
 		            </div>
 		        </section>
-<<<<<<< HEAD
-=======
-		       
-		        <div id="content">
-		        	
-			        	<div className="content-wrap">
-		        			
-	        			<div id="posts" className="post-grid grid-container nobottommargin" style={{position:'relative', height:'100'}}>
-
-							<div className="entry clearfix">
-								<div className="container clearfix" style={{position:'absolute', left:'450', height:'50'}}>
-									<div>
-										<h3>Try it for free!</h3>
-										<a className="button button-xlarge button-rounded" href="#">Join</a>
-									</div>
-								</div>
-		                	</div>
-						</div>
-					
-					</div>
-		        
-		        </div>
->>>>>>> homepage
 
 			</div>
 		);
