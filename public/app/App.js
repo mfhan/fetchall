@@ -7,6 +7,7 @@ var Home = require('./components/containers/Home');
 var Orders = require('./components/containers/Orders');
 var Account = require('./components/containers/Account');
 var Login = require('./components/containers/Login');
+var Upload = require('./components/containers/Upload');
 
 
 var App = React.createClass({
@@ -44,6 +45,9 @@ var App = React.createClass({
 		}
 		else if (this.state.page == 'orders'){
 			container = <Orders />
+		}
+		else if (this.state.page == 'upload'){
+			container = <Upload />
 		}
 
 		return(
