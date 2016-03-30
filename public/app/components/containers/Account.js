@@ -12,13 +12,11 @@ var Account = React.createClass({
 			currentUser: ProfileStore.getCurrentUser(),
 			orders: OrderStore.getOrders('array'),
 			isUpdating: false,
-			isOrdering: false,
-			hover: false
+			isOrdering: false
+			
 		}
 	},
-	toggleHover: function(){
-    this.setState({hover: !this.state.hover})
-  },
+	
 
 	componentDidMount: function(){
 		ProfileStore.addChangeListener(this.refresh);
@@ -101,12 +99,7 @@ var Account = React.createClass({
 
 	render: function(){
 
-		var linkStyle;
-	    if (this.state.hover) {
-	      linkStyle = {backgroundColor: '#fff'}
-	    } else {
-	      linkStyle = {backgroundColor: '#fef1df'}
-	    }
+		
 
 		var orderList = null;
 		if (this.state.orders != null){
@@ -119,7 +112,7 @@ var Account = React.createClass({
 
 		return (
 			<div>
-		        <section id="content" style={{backgroundImage: 'url("images/account_bkg3.jpg")',}}>
+		        <section id="content" style={{backgroundImage: 'url("images/account_bkg4.jpg")'}}>
 
 		            <div className="content-wrap" style={{padding:0}}>
 
@@ -128,11 +121,9 @@ var Account = React.createClass({
 							<div className="tabs tabs-bordered clearfix" id="tab-2">
 
 								<ul className="tab-nav clearfix" style={{background:'#fef1df', border:'none'}}>
-									<li style ={{border:'none'}}><a href="#tabs-6" style ={linkStyle} onMouseEnter={this.toggleHover} onMouseLeave={this.toggleHover}>Account</a></li>
-									<li style ={{border:'none'}}><a href="#tabs-7" style ={linkStyle} onMouseEnter={this.toggleHover} onMouseLeave={this.toggleHover}>Place Order</a></li>
-									<li style ={{border:'none'}} className="hidden-phone">
-										<a href="#tabs-8" style ={linkStyle} onMouseEnter={this.toggleHover} onMouseLeave={this.toggleHover}>Your Orders</a>
-									</li>
+									<li style ={{border:'none'}}><a href="#tabs-6" style ={{backgroundColor:'#fef1df'}}>Account</a></li>
+									<li style ={{border:'none'}}><a href="#tabs-7" style ={{backgroundColor:'#fef1df'}}>Place Order</a></li>
+									<li style ={{border:'none'}} className="hidden-phone"><a href="#tabs-8" style ={{backgroundColor:'#fef1df'}}>Your Orders</a></li>
 								</ul>
 
 								<div className="tab-container" style={{background:'#fff'}}>
