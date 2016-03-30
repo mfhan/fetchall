@@ -112,7 +112,7 @@ var Account = React.createClass({
 
 		return (
 			<div>
-		        <section id="content" style={{backgroundImage: 'url("images/account_bkg4.jpg")'}}>
+		        <section id="content" style={{backgroundImage: 'url("images/account_bkg.jpg")', minHeight:900}}>
 
 		            <div className="content-wrap" style={{padding:0}}>
 
@@ -121,9 +121,10 @@ var Account = React.createClass({
 							<div className="tabs tabs-bordered clearfix" id="tab-2">
 
 								<ul className="tab-nav clearfix" style={{background:'#fef1df', border:'none'}}>
-									<li style ={{border:'none'}}><a href="#tabs-6" style ={{backgroundColor:'#fef1df'}}>Account</a></li>
+									
 									<li style ={{border:'none'}}><a href="#tabs-7" style ={{backgroundColor:'#fef1df'}}>Place Order</a></li>
 									<li style ={{border:'none'}} className="hidden-phone"><a href="#tabs-8" style ={{backgroundColor:'#fef1df'}}>Your Orders</a></li>
+									<li style ={{border:'none'}}><a href="#tabs-6" style ={{backgroundColor:'#fef1df'}}>Account</a></li>
 								</ul>
 
 								<div className="tab-container" style={{background:'#fff'}}>
@@ -173,7 +174,7 @@ var Account = React.createClass({
 
 													<div className="col_full">
 														<label>Order Here:</label>
-														<textarea onChange={this.updateCurrentOrder} id="order" className="form-control" value={this.state.currentOrder.order}></textarea>
+														<textarea placeholder ="office supplies, food, coffee, store items, etc." onChange={this.updateCurrentOrder} id="order" className="form-control" value={this.state.currentOrder.order}></textarea>
 													</div>
 
 													<div className="col_full">
