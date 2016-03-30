@@ -12,9 +12,13 @@ var Account = React.createClass({
 			currentUser: ProfileStore.getCurrentUser(),
 			orders: OrderStore.getOrders('array'),
 			isUpdating: false,
-			isOrdering: false
+			isOrdering: false,
+			hover: false
 		}
 	},
+	toggleHover: function(){
+    this.setState({hover: !this.state.hover})
+  },
 
 	componentDidMount: function(){
 		ProfileStore.addChangeListener(this.refresh);
@@ -97,6 +101,13 @@ var Account = React.createClass({
 
 	render: function(){
 
+		var linkStyle;
+	    if (this.state.hover) {
+	      linkStyle = {backgroundColor: '#fff'}
+	    } else {
+	      linkStyle = {backgroundColor: '#fef1df'}
+	    }
+
 		var orderList = null;
 		if (this.state.orders != null){
 			orderList = this.state.orders.map(function(order, i){
@@ -116,11 +127,11 @@ var Account = React.createClass({
 							<h1 ><span style={{color:'#fff',textShadow:'1px 1px #000'}}>Welcome {this.state.currentUser.firstName.toUpperCase() }!</span></h1>
 							<div className="tabs tabs-bordered clearfix" id="tab-2">
 
-								<ul className="tab-nav clearfix" style={{background:'#fef1df'}}>
-									<li><a href="#tabs-6" style ={{background:'#fef1df',color:'#000'}}>Account</a></li>
-									<li><a href="#tabs-7" style ={{background:'#fef1df',color:'#000'}}>Place Order</a></li>
-									<li className="hidden-phone">
-										<a href="#tabs-8" style ={{background:'#fef1df',color:'#000'}}>Your Orders</a>
+								<ul className="tab-nav clearfix" style={{background:'#fef1df', border:'none'}}>
+									<li style ={{border:'none'}}><a href="#tabs-6" style ={linkStyle} onMouseEnter={this.toggleHover} onMouseLeave={this.toggleHover}>Account</a></li>
+									<li style ={{border:'none'}}><a href="#tabs-7" style ={linkStyle} onMouseEnter={this.toggleHover} onMouseLeave={this.toggleHover}>Place Order</a></li>
+									<li style ={{border:'none'}} className="hidden-phone">
+										<a href="#tabs-8" style ={linkStyle} onMouseEnter={this.toggleHover} onMouseLeave={this.toggleHover}>Your Orders</a>
 									</li>
 								</ul>
 
