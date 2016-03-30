@@ -63,7 +63,7 @@ var Login = React.createClass({
 								<br />
 				
 
-								<div className="panel panel-default divcenter noradius noborder" style={{maxWidth: 400, background: '#FFFFF0'}}>
+								<div className="panel panel-default divcenter noradius noborder" style={{maxWidth: 400, background: '#F9F9F9'}}>
 									<div className="row center" style={{padding:40}}>
 										<form id="login-form" name="login-form" className="nobottommargin" action="#" method="post">
 											<h3>Login to Account</h3>
