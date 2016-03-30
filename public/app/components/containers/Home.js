@@ -24,7 +24,7 @@ var Home = React.createClass({
 		                </div>
 
 		            </div>
-		            
+
 		            <div className="container clearfix">
 		                <Register />
 		            </div>
@@ -110,7 +110,7 @@ var Home = React.createClass({
 		                    </div>
 		                </div>
 		            </div>
-		        </section> 
+		        </section>
 
 			</div>
 		);

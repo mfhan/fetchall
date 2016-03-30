@@ -3,7 +3,6 @@ var ProfileStore = require('../../stores/ProfileStore');
 var OrderStore = require('../../stores/OrderStore');
 var FetchServerActions = require('../../actions/FetchServerActions');
 
-
 var Orders = React.createClass({
 
 	getInitialState: function(){
@@ -23,6 +22,7 @@ var Orders = React.createClass({
 		this.setState({
 			currentUser: ProfileStore.getCurrentUser()
 		});
+
 
 		console.log('REFRESH: '+JSON.stringify(this.state.currentUser));
 		if (this.state.currentUser.id == null)
@@ -58,9 +58,11 @@ var Orders = React.createClass({
 	render: function(){
 		var orderList = null;
 		var _this = this;
+		var row = null;
+
 		if (this.state.orders != null){
 			orderList = this.state.orders.map(function(order, i){
-				var row = null;
+
 				if (order.fetcher.length > 0){ // this order is claimed
 					row = <tr key={i}><td>{i+1}</td><td>{order.order}</td><td>{order.address}</td><td>{order.status}</td><td><button onClick={_this.claimOrder} id={i} className="btn btn-danger">Claimed</button></td></tr>;
 				}
@@ -74,16 +76,17 @@ var Orders = React.createClass({
 		}
 
 		return (
-			<div className="container">
-				<h1>Welcome {this.state.currentUser.firstName}</h1>
-				<table className="table">
-				  <thead>
+			<div className="container" style={{padding:60, minHeight: 300}}  >
+				<h1>Welcome {this.state.currentUser.firstName.toUpperCase()} <i className="fa fa-thumbs-o-up"></i> ! <br />Please Pick a Delivery Job</h1>
+				<table className="table" style={{fontSize:16 }}>
+				  <thead >
 					<tr>
-					  <th>#</th>
-					  <th>Order</th>
-					  <th>Adddress</th>
-					  <th>Status</th>
-					  <th>&nbsp;</th>
+					  <th> #</th>
+					  <th><i className="fa fa-shopping-basket" > <span style={{fontFamily:'Lato', fontSize:16}} >Orders</span></i></th>
+					  <th><i className="fa fa-building-o"><span style={{fontFamily:'Lato', fontSize:16}} > Address</span></i></th>
+					  <th><i className="fa fa-bicycle"> <span style={{fontFamily:'Lato', fontSize:16}} >Status</span></i></th>
+					  <th><i className="fa fa-check-square"><span style={{fontFamily:'Lato', fontSize:16}} >&nbsp;</span></i></th>
+
 					</tr>
 				  </thead>
 				  <tbody>
