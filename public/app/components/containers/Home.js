@@ -37,7 +37,7 @@ var Home = React.createClass({
 
             				<div className="col_full nobottommargin center">
 								<h2>How it works?</h2>
-								<h3>Simple steps to get your food delivery to your work</h3>
+								<h3>A simple way to get what you need when you need</h3>
 							</div>
 							<br />
 							<div>
@@ -97,15 +97,28 @@ var Home = React.createClass({
 									</div>
 								</div>
 							</div>
-
-							<div className="container clearfix">
-								<div className="promo promo-border promo-center bottommargin">
-									<h3>Try it for free! first order is on us</h3>
-									<a className="button button-xlarge button-rounded" href='#'>Join</a>
-								</div>
-							</div>
 		            </div>
 		        </section>
+		       
+		        <div id="content">
+		        	
+			        	<div className="content-wrap">
+		        			
+	        			<div id="posts" className="post-grid grid-container nobottommargin" style={{position:'relative', height:'100'}}>
+
+							<div className="entry clearfix">
+								<div className="container clearfix" style={{position:'absolute', left:'450', height:'50'}}>
+									<div>
+										<h3>Try it for free!</h3>
+										<a className="button button-xlarge button-rounded" href="#">Join</a>
+									</div>
+								</div>
+		                	</div>
+						</div>
+					
+					</div>
+		        
+		        </div>
 
 			</div>
 		);
