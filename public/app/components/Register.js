@@ -73,8 +73,8 @@ var Register = React.createClass({
 		return(
 			<form role="form" className="landing-wide-form landing-form-overlay dark nobottommargin clearfix" style={{bottom:36}}>
                 <div className="heading-block nobottommargin nobottomborder">
-                    <h2>Signup for FREE</h2>
-                    <span>Get 30 Days Unlimited Access</span>
+                    <h2>Sign Up for FREE</h2>
+                    <span>First Order Is on Us!</span>
                 </div>
                 <div className="line" style={{margin: '20px 0 30px'}}></div>
                 <div className="col_full">

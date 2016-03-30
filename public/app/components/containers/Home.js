@@ -36,8 +36,8 @@ var Home = React.createClass({
 		            <div className="content-wrap">
 
             				<div className="col_full nobottommargin center">
-								<h2>How it works?</h2>
-								<h3>A simple way to get what you need when you need</h3>
+								<h2>How Does It Work?</h2>
+								<h3>A simple way to get what you need when you need it</h3>
 							</div>
 							<br />
 							<div>
@@ -51,7 +51,7 @@ var Home = React.createClass({
 				                            <h3>Place Order</h3>
 				                            <p>Simply type what you want and where it is</p>
 				                        </div>
-				                        
+
 				                    </div>
 
 				                    <div className="col_one_third">
@@ -82,7 +82,7 @@ var Home = React.createClass({
 			                	</div>
 
 		                		<div className="col-md-11">
-		                			<h2>Benefits</h2> 
+		                			<h2>Benefits</h2>
 									<div className="heading-block">
 										<h4>Simple</h4>
 										<span>Text what you want when you want it</span>

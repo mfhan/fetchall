@@ -61,12 +61,12 @@ var Login = React.createClass({
 									</a>
 								</div>
 								<br />
-				
+
 
 								<div className="panel panel-default divcenter noradius noborder" style={{maxWidth: 400, background: '#F9F9F9'}}>
 									<div className="row center" style={{padding:40}}>
 										<form id="login-form" name="login-form" className="nobottommargin" action="#" method="post">
-											<h3>Login to Account</h3>
+											<h3>Log Into Account</h3>
 
 											<div className="col_full nobottommargin center">
 												<label for="login-form-username">Email:</label>
@@ -96,7 +96,7 @@ var Login = React.createClass({
 
 					</div>
 
-				</section>			
+				</section>
 			</div>
 		);
 	}
