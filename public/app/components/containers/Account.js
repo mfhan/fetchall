@@ -133,7 +133,7 @@ var Account = React.createClass({
 
 										<div className="col_two_third nobottommargin">
 
-											<div className="well well-lg nobottommargin" style={{border:'2px dotted red'}}>
+											<div className="well well-lg nobottommargin" style={{border:'2px inset red'}}>
 												<form id="login-form" name="login-form" className="nobottommargin" action="#" method="post" >
 
 													<h3 style={{color:'red'}}>Manage your Account</h3>
@@ -167,7 +167,7 @@ var Account = React.createClass({
 
 										<div className="col_two_third nobottommargin">
 
-											<div className="well well-lg nobottommargin" style={{border:'2px dotted red'}}>
+											<div className="well well-lg nobottommargin" style={{border:'2px inset red'}}>
 												<form id="login-form" name="login-form" className="nobottommargin" action="#" method="post">
 
 													<h3 style={{color:'red'}}>Place Your Order</h3>
