@@ -24,10 +24,10 @@ var Sidebar = React.createClass({
 	                                <a href="/"><div>Home</div></a>
 	                            </li>
 	                            <li>
-	                                <a href="index.html"><div>About</div></a>
+	                                <a href="/about"><div>About</div></a>
 	                            </li>
 	                            
-	                            <li><a href="#"><div>Pages</div></a>
+	                            <li><a href="/"><div>Pages</div></a>
 	                                <ul>
 	                                    <li><a href="#"><div>One</div></a></li>
 	                                    <li><a href="#"><div>Two</div></a></li>
