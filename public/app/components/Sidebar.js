@@ -1,4 +1,8 @@
 var React = require('react');
+var FetchClientActions = require('../actions/FetchClientActions');
+var FetchServerActions = require('../actions/FetchServerActions');
+var ProfileStore = require('../stores/ProfileStore');
+
 
 var Sidebar = React.createClass({
 
@@ -24,16 +28,12 @@ var Sidebar = React.createClass({
 	                                <a href="/"><div>Home</div></a>
 	                            </li>
 	                            <li>
-	                                <a href="/about"><div>About</div></a>
+	                                <a href="/about"><div>About Me</div></a>
 	                            </li>
-	                            
-	                            <li><a href="/"><div>Pages</div></a>
-	                                <ul>
-	                                    <li><a href="#"><div>One</div></a></li>
-	                                    <li><a href="#"><div>Two</div></a></li>
-	                                    <li><a href="#"><div>Three</div></a></li>
-	                                </ul>
+	                           	<li>
+	                                <a href="/work"><div>Work With Us!</div></a>
 	                            </li>
+
 	                        </ul>
 	                    </nav>
 
@@ -50,7 +50,7 @@ var Sidebar = React.createClass({
 	                    </div>
 	                </div>
 	            </div>
-	        </header>			
+	        </header>
 		);
 	}
 

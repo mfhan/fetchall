@@ -12,7 +12,7 @@ var Footer = React.createClass({
 	                <div className="container clearfix">
 
 	                    <div className="col_half">
-	                        Copyrights &copy; 2016 All Rights Reserved by Canvas Inc.<br />
+	                        Copyrights &copy; 2016 All Rights Reserved by Fetch Inc.<br />
 	                        <div className="copyright-links">
 	                        	<a href="#">Terms of Use</a> / <a href="#">Privacy Policy</a>
 	                        </div>
@@ -35,10 +35,10 @@ var Footer = React.createClass({
 	                        <div className="clear"></div>
 
 	                        <i className="icon-envelope2"></i>
-	                        info@canvas.com
+	                        info@fetch.com
 	                        <span className="middot">&middot;</span>
 	                        <i className="icon-headphones"></i>
-	                        +91-11-6541-6369
+	                        +646-320-3548
 	                    </div>
 
 	                </div>

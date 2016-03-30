@@ -6,7 +6,7 @@ var Work = React.createClass({
 		return(
 			<div>
 		        <section id="content" style={{backgroundImage: 'url("images/account_bkg.jpg")'}}>
-							<div id="work-content" style={{background: '#f9f9f9', padding:90, margin:10, opacity:0.8}}>
+							<div id="work-content" style={{background: '#f9f9f9', padding:0, margin:90, opacity:0.8}}>
 		            			<div className="content-wrap">
             						<div className="col_full  center">
 								<h2>Come Work With Us!</h2>

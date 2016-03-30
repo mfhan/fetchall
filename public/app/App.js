@@ -8,7 +8,8 @@ var Orders = require('./components/containers/Orders');
 var Account = require('./components/containers/Account');
 var Login = require('./components/containers/Login');
 var Upload = require('./components/containers/Upload');
-
+var Work = require('./components/containers/Work');
+var About = require('./components/containers/About');
 
 var App = React.createClass({
 	getInitialState: function(){
@@ -36,7 +37,7 @@ var App = React.createClass({
 		var container = null;
 		if (this.state.page == 'home'){
 			container = <Home />
-		} 
+		}
 		else if (this.state.page == 'account'){
 			container = <Account />
 		}
@@ -50,12 +51,18 @@ var App = React.createClass({
 			container = <Upload />
 		}
 
+		else if (this.state.page == 'about'){
+			container = <About />
+		}
+		else if (this.state.page == 'work'){
+			container = <Work />
+		}
 		return(
 
 			<div>
 		        <Sidebar />
 		        {container}
-		        <Footer /> 
+		        <Footer />
 			</div>
 		);
 	}

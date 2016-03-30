@@ -200,7 +200,7 @@ h2 > span:not(.nocolor),
 h3 > span:not(.nocolor),
 h4 > span:not(.nocolor),
 h5 > span:not(.nocolor),
-h6 > span:not(.nocolor) { color: #1ABC9C; }
+h6 > span:not(.nocolor) /*{ color: #1ABC9C; }*/ { color: #e60073; }
 
 p,
 pre,
@@ -13012,3 +13012,4 @@ body:not(.no-transition) #wrapper,
 	padding:0!important
 }
 
+font-family: 'Roboto', sans-serif;
