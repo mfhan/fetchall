@@ -76,16 +76,16 @@ var Orders = React.createClass({
 		}
 
 		return (
-			<div className="container" >
+			<div className="container" style={{padding:60, minHeight: 300}}  >
 				<h1>Welcome {this.state.currentUser.firstName.toUpperCase()} <i className="fa fa-thumbs-o-up"></i> ! <br />Please Pick a Delivery Job</h1>
-				<table className="table">
+				<table className="table" style={{fontSize:16 }}>
 				  <thead >
 					<tr>
 					  <th> #</th>
-					  <th><i className="fa fa-shopping-basket"> Orders</i></th>
-					  <th><i className="fa fa-building-o"> Address</i></th>
-					  <th><i className="fa fa-bicycle"> Status</i></th>
-					  <th><i className="fa fa-ticket">&nbsp;</i></th>
+					  <th><i className="fa fa-shopping-basket" > <span style={{fontFamily:'Lato', fontSize:16}} >Orders</span></i></th>
+					  <th><i className="fa fa-building-o"><span style={{fontFamily:'Lato', fontSize:16}} > Address</span></i></th>
+					  <th><i className="fa fa-bicycle"> <span style={{fontFamily:'Lato', fontSize:16}} >Status</span></i></th>
+					  <th><i className="fa fa-check-square"><span style={{fontFamily:'Lato', fontSize:16}} >&nbsp;</span></i></th>
 
 					</tr>
 				  </thead>
