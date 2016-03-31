@@ -1,4 +1,7 @@
 var Profile = require('../models/Profile');
+var EmailManager = require('../managers/EmailManager');
+var fs = require('fs');
+var Promise = require('bluebird');
 var bcrypt = require('bcrypt');
 
 module.exports = {
@@ -69,8 +72,30 @@ module.exports = {
 
 			completion(null, profile.summary());
 		});
-	}
+	},
 
+	//sends batch emails to profiles that fit filters as determined in OrderController:
+
+	notifyProfiles: function(filters, note, subject){
+		return new Promise(function(resolve, reject){
+
+			Profile.find(filters, function(err, profiles){ //we change PARAMS into FILTERS
+				if (err){
+					reject(err);
+				    return;
+				}
+				else {
+					var recipients = [];
+					for (var i=0; i<profiles.length; i++){
+						var profile = profiles[i];
+						recipients.push(profile.email);
+					}
+					EmailManager.sendBatchEmail('mf212mf@gmail.com', recipients, subject, note, null);
+					resolve();
+				}
+			});
+		});
+	}
 
 
 }

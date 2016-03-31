@@ -19,32 +19,66 @@ var fetchFile =function(path){
 	});
 }
 
-var notifyProfiles = function(filters, note, subject){
-	return new Promise(function(resolve, reject){
-		ProfileController.get(filters, false, function(err, results){
-	 		if (err){
-	 			reject(err);
-	 		}
-	 		else {
-	 			if (order.fetcher == null){
-					var recipients = [];
-			 		for (var i=0; i<results.length; i++){
-			 			var fetcher = results[i];
-			 			recipients.push(fetcher.email);
-			 		}
+// var notifyProfiles = function(filters, note, subject){
+// 	return new Promise(function(resolve, reject){
+// 		if (profileId == null){
+// 			ProfileController.get(filters, false, function(err, results){
+// 	 		if (err){
+// 	 			reject(err);
+// 	 		}
+// 	 		else {
+// 				var recipients = [];
+// 		 		for (var i=0; i<results.length; i++){
+// 		 			var profile = results[i];
+// 		 			recipients.push(profile.email);
+// 			 		}
 
-			 	EmailManager.sendBatchEmail('mf212mf@gmail.com', recipients, subject, note, null);
-		 		resolve();
-			 	}
-			 	else {
-			 		var recipient = order.customer;
-			 		EmailManager.sendEmail('mf212mf@gmail.com', recipient, subject, note, null);
-		 			resolve();
-			 	}
-		 	}
-	 	});
-	});
-}
+// 			 	EmailManager.sendBatchEmail('mf212mf@gmail.com', recipients, subject, note, null);
+// 		 		resolve();
+// 		 		}
+// 	 		});
+// 		}
+// 	});
+// }
+
+
+
+// var notifyProfiles = function(profileId, filters, note, subject){
+// 	return new Promise(function(resolve, reject){
+// 		if (profileId == null){
+// 			ProfileController.get(filters, false, function(err, results){
+// 	 		if (err){
+// 	 			reject(err);
+// 	 		}
+// 	 		else {
+// 				var recipients = [];
+// 		 		for (var i=0; i<results.length; i++){
+// 		 			var profile = results[i];
+// 		 			recipients.push(profile.email);
+// 			 		}
+
+// 			 	EmailManager.sendBatchEmail('mf212mf@gmail.com', recipients, subject, note, null);
+// 		 		resolve();
+// 		 		}
+// 	 		});
+// 		}
+
+// 		else {
+// 			ProfileController.getByIdAndUpdate(profileId, function(err, results){
+// 		 		if (err){
+// 		 			reject(err);
+// 		 		}
+// 		 		else {
+
+// 				 	EmailManager.sendBatchEmail('mf212mf@gmail.com', [result.email], subject, note, null);
+// 			 		resolve();
+// 			 	}
+// 	 		});
+
+// 		}
+
+// 	});
+// }
 
 
 
@@ -135,7 +169,7 @@ module.exports = {
 				// html = html.replace('{{order}}', orderSummary['order']);
 				html = data.replace('{{address}}', orderSummary['address']);
 				html = html.replace('{{order}}', orderSummary['order']);
-				return notifyProfiles({type:'fetcher'}, html, 'AN ORDER CAME IN!');
+				return ProfileController.notifyProfiles({type:'fetcher'}, html, 'AN ORDER CAME IN!');
 
 				// ProfileController.get({type:'fetcher'}, false, function(err, results){
 			 // 		if (err){
@@ -169,19 +203,31 @@ module.exports = {
 			    return;
 			}
 
-			// delivery person is claiming an order:
 			if (params['fetcher'] != null){
-				var path = 'public/email/customernotification.html';
 
+				var path = 'public/email/customernotification.html';
 				fetchFile(path)
 				.then(function(data){  // comes from "resolve (data)" in the promise
-					var orderSummary = order.summary();
-					var html = data.replace('{{order}}', orderSummary['order']);
-					html = html.replace('{{address}}', orderSummary['address']);
-					return notifyProfiles({type:'customer'}, html, 'AN ORDER CAME IN!');
+					var html = data.replace('{{order}}', order.order);
+					return ProfileController.notifyProfiles({_id:order.customer}, html, 'Your order is on the way!');
 				})
 				.catch(function(err){
 				});
+
+//with the getByIdAndUpdate loop:
+			// if (params['fetcher'] != null){
+
+			// 	var path = 'public/email/customernotification.html';
+			// 	fetchFile(path)
+			// 	.then(function(data){  // comes from "resolve (data)" in the promise
+			// 		var html = data.replace('{{order}}', order.order);
+			// 		return notifyProfiles(order.customer, html, 'Your order is on the way!');
+			// 	})
+			// 	.catch(function(err){
+			// 	});
+
+//without getByIdAndUpdate loop, we should go
+				// return notifyProfiles({_id:order.customer}, html, 'Your order is on the way!');
 
 				// fs.readFile(path, 'utf8', function (err, data) {
 				// 	if (err) { }
