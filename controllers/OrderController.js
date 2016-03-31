@@ -26,7 +26,7 @@ var notifyProfiles = function(filters, note, subject){
 	 			reject(err);
 	 		}
 	 		else {
-	 			if (order.fetcher != null){
+	 			if (order.fetcher == null){
 					var recipients = [];
 			 		for (var i=0; i<results.length; i++){
 			 			var fetcher = results[i];
