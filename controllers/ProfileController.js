@@ -64,7 +64,7 @@ module.exports = {
 				FileManager.fetchFile(path)
 				.then(function(data){  // comes from "resolve (data)" in the promise
 					var html = data.replace('{{user}}', profile.firstName);
-					return ProfileController.notifyProfiles(null, html, 'Welcome to Fetch!');
+					EmailManager.sendBatchEmail('mf212mf@gmail.com', profile.email, 'Welcome to fetch', html, null);
 				})
 				.catch(function(err){
 				});
