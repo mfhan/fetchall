@@ -26,18 +26,27 @@ var notifyProfiles = function(filters, note, subject){
 	 			reject(err);
 	 		}
 	 		else {
-				var recipients = [];
-		 		for (var i=0; i<results.length; i++){
-		 			var fetcher = results[i];
-		 			recipients.push(fetcher.email);
-		 		}
+	 			if (profile.type == 'fetcher' ){
+					var recipients = [];
+			 		for (var i=0; i<results.length; i++){
+			 			var fetcher = results[i];
+			 			recipients.push(fetcher.email);
+			 		}
 
-		 		EmailManager.sendBatchEmail('mf212mf@gmail.com', recipients, subject, note, null);
+			 	EmailManager.sendBatchEmail('mf212mf@gmail.com', recipients, subject, note, null);
 		 		resolve();
+			 	}
+			 	else {
+			 		var recipient = order.customer;
+			 		EmailManager.sendEmail('mf212mf@gmail.com', recipient, subject, note, null);
+		 			resolve();
+			 	}
 		 	}
 	 	});
 	});
 }
+
+
 
 
 module.exports = {
@@ -164,21 +173,31 @@ module.exports = {
 			if (params['fetcher'] != null){
 				var path = 'public/email/customernotification.html';
 
-				fs.readFile(path, 'utf8', function (err, data) {
-					if (err) { }
-
+				fetchFile(path)
+				.then(function(data){  // comes from "resolve (data)" in the promise
 					var orderSummary = order.summary();
-					var html = data;
-					html = html.replace('{{order}}', order.order);
-
-					ProfileController.getById(order.customer, function(err, profile){
-						if (err){
-
-						}
-
-						EmailManager.sendEmail('info@thegridmedia.com', profile.email, 'Your Order Has been Claimed.', html, null);
-					});
+					var html = data.replace('{{order}}', orderSummary['order']);
+					html = html.replace('{{address}}', orderSummary['address']);
+					return notifyProfiles({type:'customer'}, html, 'AN ORDER CAME IN!');
+				})
+				.catch(function(err){
 				});
+
+				// fs.readFile(path, 'utf8', function (err, data) {
+				// 	if (err) { }
+
+				// 	var orderSummary = order.summary();
+				// 	var html = data;
+				// 	html = html.replace('{{order}}', order.order);
+
+				// 	ProfileController.getById(order.customer, function(err, profile){
+				// 		if (err){
+
+				// 		}
+
+				// 		EmailManager.sendEmail('info@thegridmedia.com', profile.email, 'Your Order Has been Claimed.', html, null);
+				// 	});
+				// });
 
 			}
 
