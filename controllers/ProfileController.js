@@ -82,7 +82,6 @@ module.exports = {
 			Profile.find(filters, function(err, profiles){ //we change PARAMS into FILTERS
 				if (err){
 					reject(err);
-				    return;
 				}
 				else {
 					var recipients = [];
