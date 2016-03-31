@@ -7,7 +7,6 @@ var Promise = require('bluebird');
 var fetchFile =function(path){
 	return new Promise(function (resolve, reject){
 
-
 		fs.readFile(path, 'utf8', function(err, data){
 			if (err){
 				reject(err);
@@ -15,14 +14,9 @@ var fetchFile =function(path){
 			else {
 				resolve(data);
 			}
-
-
 		});
-
-
 	});
 }
-
 
 
 module.exports = {
@@ -78,30 +72,6 @@ module.exports = {
 
 			var path = 'public/email/email.html';
 
-			// fs.readFile(path, 'utf8', function (err, data) {
-			// 	if (err) {
-			// 	}
-
-			// 	var orderSummary = order.summary();
-			// 	var html = data;
-			// 	html = html.replace('{{address}}', orderSummary['address']);
-			// 	html = html.replace('{{order}}', orderSummary['order']);
-
-			// 	ProfileController.get({type:'fetcher'}, false, function(err, results){
-			// 		if (err){
-
-			// 		}
-
-			// 		var recipients = [];
-			// 		for (var i=0; i<results.length; i++){
-			// 			var fetcher = results[i];
-			// 			recipients.push(fetcher.email);
-			// 		}
-
-			// 		EmailManager.sendBatchEmail('info@thegridmedia.com', recipients, 'Order Notification', html, null);
-			// 	});
-
-			// });
 
 			fetchFile(path)
 			.then(function(data){  // comes from "resolve (data)" in the promise
@@ -123,7 +93,6 @@ module.exports = {
 			 		EmailManager.sendBatchEmail('mf212mf@gmail.com', recipients, 'Order Notification Promise!', html, null);
 			 	});
 			})
-
 			.catch(function(err){
 			});
 
