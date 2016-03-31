@@ -1,23 +1,24 @@
 var Order = require('../models/Order');
 var EmailManager = require('../managers/EmailManager');
+var FileManager = require('../managers/FileManager');
 var ProfileController = require('../controllers/ProfileController');
 var fs = require('fs');
 var Promise = require('bluebird');
 
-// Promise Methods:
-var fetchFile =function(path){
-	return new Promise(function (resolve, reject){
+// // Promise Methods:
+// var fetchFile =function(path){
+// 	return new Promise(function (resolve, reject){
 
-		fs.readFile(path, 'utf8', function(err, data){
-			if (err){
-				reject(err);
-			}
-			else {
-				resolve(data);
-			}
-		});
-	});
-}
+// 		fs.readFile(path, 'utf8', function(err, data){
+// 			if (err){
+// 				reject(err);
+// 			}
+// 			else {
+// 				resolve(data);
+// 			}
+// 		});
+// 	});
+// }
 
 // var notifyProfiles = function(filters, note, subject){
 // 	return new Promise(function(resolve, reject){
@@ -42,43 +43,6 @@ var fetchFile =function(path){
 // }
 
 
-
-// var notifyProfiles = function(profileId, filters, note, subject){
-// 	return new Promise(function(resolve, reject){
-// 		if (profileId == null){
-// 			ProfileController.get(filters, false, function(err, results){
-// 	 		if (err){
-// 	 			reject(err);
-// 	 		}
-// 	 		else {
-// 				var recipients = [];
-// 		 		for (var i=0; i<results.length; i++){
-// 		 			var profile = results[i];
-// 		 			recipients.push(profile.email);
-// 			 		}
-
-// 			 	EmailManager.sendBatchEmail('mf212mf@gmail.com', recipients, subject, note, null);
-// 		 		resolve();
-// 		 		}
-// 	 		});
-// 		}
-
-// 		else {
-// 			ProfileController.getByIdAndUpdate(profileId, function(err, results){
-// 		 		if (err){
-// 		 			reject(err);
-// 		 		}
-// 		 		else {
-
-// 				 	EmailManager.sendBatchEmail('mf212mf@gmail.com', [result.email], subject, note, null);
-// 			 		resolve();
-// 			 	}
-// 	 		});
-
-// 		}
-
-// 	});
-// }
 
 
 
@@ -161,7 +125,7 @@ module.exports = {
 
 			// });
 
-			fetchFile(path)
+			FileManager.fetchFile(path)
 			.then(function(data){  // comes from "resolve (data)" in the promise
 				var orderSummary = order.summary();
 				var html = data.replace('{{address}}', orderSummary['address']);
@@ -206,7 +170,7 @@ module.exports = {
 			if (params['fetcher'] != null){
 
 				var path = 'public/email/customernotification.html';
-				fetchFile(path)
+				FileManager.fetchFile(path)
 				.then(function(data){  // comes from "resolve (data)" in the promise
 					var html = data.replace('{{order}}', order.order);
 					return ProfileController.notifyProfiles({_id:order.customer}, html, 'Your order is on the way!');
@@ -250,7 +214,5 @@ module.exports = {
 			completion(null, order.summary());
 		});
 	}
-
-
 
 }
