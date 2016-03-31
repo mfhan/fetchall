@@ -45,8 +45,6 @@ var ProfileController = require('../controllers/ProfileController');
 
 
 
-
-
 module.exports = {
 
 	get: function(params, isRaw, completion){

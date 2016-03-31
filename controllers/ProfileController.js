@@ -58,9 +58,35 @@ module.exports = {
 			    return;
 			}
 
+			else {
+				var path = 'public/email/welcome.html';
+				FileManager.fetchFile(path)
+				.then(function(data){  // comes from "resolve (data)" in the promise
+					var html = data.replace('{{user}}', profile.firstName);
+					return ProfileController.notifyProfiles(null, html, 'Welcome to Fetch!');
+				})
+				.catch(function(err){
+				});
+			}
+
 			completion(null, profile.summary());
 		});
 	},
+
+	// post: function(params, completion){
+	// 	// Hash the password:
+	// 	var hashedPassword = bcrypt.hashSync(params['password'], 10); // w3$rpfjaqpw3fr2134faw
+	// 	params['password'] = hashedPassword;
+
+	// 	Profile.create(params, function(err, profile){
+	// 		if (err){
+	// 			completion(err, null);
+	// 		    return;
+	// 		}
+
+	// 		completion(null, profile.summary());
+	// 	});
+	// },
 
 	put: function(id, params, completion){
 
