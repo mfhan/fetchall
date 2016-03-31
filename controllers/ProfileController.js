@@ -1,5 +1,6 @@
 var Profile = require('../models/Profile');
 var EmailManager = require('../managers/EmailManager');
+var FileManager = require('../managers/FileManager');
 var fs = require('fs');
 var Promise = require('bluebird');
 var bcrypt = require('bcrypt');
