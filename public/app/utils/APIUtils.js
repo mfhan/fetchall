@@ -52,13 +52,13 @@ module.exports = {
 	updateProfile: function(profile){
 		urlRequest('put', '/api/profile/'+profile.id, profile)
 		.then(function(response){
-			console.log('API UTILS - '+JSON.stringify(response));
+			// console.log('API UTILS - '+JSON.stringify(response));
 
 			FetchDispatcher.dispatch({
 				type: FetchConstants.USER_UPDATED,
 				currentUser: response.result
 			});
-			
+
 		})
 		.catch(function(error){
 
@@ -125,7 +125,7 @@ module.exports = {
 				type: FetchConstants.ORDER_CREATED,
 				order: response.result
 			});
-			
+
 		})
 		.catch(function(error){
 
@@ -149,25 +149,17 @@ module.exports = {
 	updateOrder: function(orderId, params){
 		urlRequest('put', '/api/order/'+orderId, params)
 		.then(function(response){
-			console.log('API UTILS - '+JSON.stringify(response));
+			// console.log('API UTILS - '+JSON.stringify(response));
 
 			FetchDispatcher.dispatch({
 				type: FetchConstants.ORDER_UPDATED,
 				updatedOrder: response.result
 			});
-			
+
 		})
 		.catch(function(error){
 
 		});
-
 	}
 
-
-
 }
-
-
-
-
-

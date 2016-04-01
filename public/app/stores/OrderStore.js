@@ -8,7 +8,8 @@ var currentOrder = {
 	id: null,
 	order: '',
 	address: '',
-	customer: ''
+	customer: '',
+	timeplaced: Date.now
 }
 
 var orders = null;
@@ -31,6 +32,12 @@ var OrderStore = assign({}, EventEmitter.prototype, {
 		return currentOrder;
 	},
 
+
+
+	getOrder: function(orderId){
+		return orders[orderId];
+	},
+
 	getOrders: function(format){
 		if (orders == null)
 			return orders;
@@ -45,7 +52,6 @@ var OrderStore = assign({}, EventEmitter.prototype, {
 				var key = keys[i];
 				array.push(orders[key]);
 			}
-
 			return array;
 		}
 
@@ -80,12 +86,13 @@ OrderStore.dispatchToken = FetchDispatcher.register(function(action) {
 			id: null,
 			order: '',
 			address: '',
-			customer: ''
+			customer: '',
+			timeplaced: Date.now
 		}
 
 		if (orders == null)
 			orders = {}
-		
+
 		orders[action.order.id] = action.order;
 		console.log('ORDER_CREATED Notification Received: '+JSON.stringify(orders));
 
@@ -101,19 +108,15 @@ OrderStore.dispatchToken = FetchDispatcher.register(function(action) {
      	OrderStore.emitChange();
 	}
 
+	if (action.type == FetchConstants.SELECTED_ORDER_UPDATED){
+		if (orders == null)
+			orders = {}
+
+		var updatedOrder = action.selectedOrder;
+		orders[updatedOrder.id] = updatedOrder;
+     	OrderStore.emitChange();
+	}
 
 });
 
-
 module.exports = OrderStore;
-
-
-
-
-
-
-
-
-
-
-

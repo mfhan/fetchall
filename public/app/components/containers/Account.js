@@ -13,10 +13,10 @@ var Account = React.createClass({
 			orders: OrderStore.getOrders('array'),
 			isUpdating: false,
 			isOrdering: false
-			
+
 		}
 	},
-	
+
 
 	componentDidMount: function(){
 		ProfileStore.addChangeListener(this.refresh);
@@ -44,7 +44,7 @@ var Account = React.createClass({
 		console.log('REFRESH: '+JSON.stringify(this.state.currentUser));
 		if (this.state.currentUser.id == null)
 			return;
-		
+
 		if (this.state.orders == null){
 			FetchServerActions.fetchOrders({
 				customer: this.state.currentUser.id
@@ -99,8 +99,6 @@ var Account = React.createClass({
 
 	render: function(){
 
-		
-
 		var orderList = null;
 		if (this.state.orders != null){
 			orderList = this.state.orders.map(function(order, i){
@@ -121,7 +119,7 @@ var Account = React.createClass({
 							<div className="tabs tabs-bordered clearfix" id="tab-2">
 
 								<ul className="tab-nav clearfix" style={{background:'#fef1df', border:'none'}}>
-									
+
 									<li style ={{border:'none'}}><a href="#tabs-7" style ={{backgroundColor:'#fef1df'}}>Place Order</a></li>
 									<li style ={{border:'none'}} className="hidden-phone"><a href="#tabs-8" style ={{backgroundColor:'#fef1df'}}>Your Orders</a></li>
 									<li style ={{border:'none'}}><a href="#tabs-6" style ={{backgroundColor:'#fef1df'}}>Account</a></li>
@@ -217,7 +215,7 @@ var Account = React.createClass({
 
 		                </div>
 		            </div>
-		        </section> 
+		        </section>
 
 			</div>
 		);

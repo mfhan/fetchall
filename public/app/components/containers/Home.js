@@ -84,16 +84,16 @@ var Home = React.createClass({
 		                		<div className="col-md-11">
 		                			<h2>Benefits</h2>
 									<div className="heading-block">
-										<h4>Simple</h4>
+										<h4>Simplicity</h4>
 										<span>Text what you want when you want it</span>
 									</div>
 									<div className="heading-block">
-										<h4>Secured</h4>
+										<h4>Security</h4>
 										<span>Automated verification for all parties</span>
 									</div>
 									<div className="heading-block">
 										<h4>Convenience</h4>
-										<span>Deliver your favorite within minutes</span>
+										<span>Get your favorites within minutes</span>
 									</div>
 								</div>
 							</div>

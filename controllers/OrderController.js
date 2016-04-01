@@ -176,6 +176,7 @@ module.exports = {
 				.catch(function(err){
 				});
 
+
 //with the getByIdAndUpdate loop:
 			// if (params['fetcher'] != null){
 
@@ -206,8 +207,13 @@ module.exports = {
 				// 		EmailManager.sendEmail('info@thegridmedia.com', profile.email, 'Your Order Has been Claimed.', html, null);
 				// 	});
 				// });
-
 			}
+
+
+
+			// if (){
+
+			// }
 
 			completion(null, order.summary());
 		});

@@ -20,6 +20,17 @@ module.exports = {
 		});
 
 
+	},
+
+	updateSelectedOrder: function(updatedOrder){
+	// console.log('UPDATE SELECTED ORDER: '+JSON.stringify(updatedOrder));
+
+		FetchDispatcher.dispatch({
+			type: FetchConstants.SELECTED_ORDER_UPDATED,
+			selectedOrder: updatedOrder
+		});
+
+
 	}
 
 

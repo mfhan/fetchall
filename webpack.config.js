@@ -7,9 +7,9 @@ module.exports = {
 	output: {
 		filename:"public/build/bundle.js"
 	},
-	plugins: [
-    	new webpack.optimize.UglifyJsPlugin({minimize: true}),
-	],	
+	// plugins: [
+ //    	new webpack.optimize.UglifyJsPlugin({minimize: true}),
+	// ],
 	module: {
 		loaders: [
 			{
