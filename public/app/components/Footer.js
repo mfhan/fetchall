@@ -12,7 +12,7 @@ var Footer = React.createClass({
 	                <div className="container clearfix">
 
 	                    <div className="col_half">
-	                        Copyrights &copy; 2016 All Rights Reserved by Fetch Inc.<br />
+	                        Copyrights &copy; 2016 All Rights Reserved by Marie-France Han<br />
 	                        <div className="copyright-links">
 	                        	<a href="#">Terms of Use</a> / <a href="#">Privacy Policy</a>
 	                        </div>
@@ -35,7 +35,7 @@ var Footer = React.createClass({
 	                        <div className="clear"></div>
 
 	                        <i className="icon-envelope2"></i>
-	                        info@fetch.com
+	                        mf212mf@gmail.com
 	                        <span className="middot">&middot;</span>
 	                        <i className="icon-headphones"></i>
 	                        +646-320-3548

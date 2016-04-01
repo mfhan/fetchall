@@ -32,7 +32,8 @@ var Register = React.createClass({
 	updateVisitor: function(event){
 		var updatedVisitor = {
 			id: this.state.visitor.id,
-			name: this.state.visitor.name,
+			firstName: this.state.visitor.firstName,
+			lastName: this.state.visitor.lastName,
 			type: this.state.visitor.type,
 			email: this.state.visitor.email,
 			password: this.state.visitor.password
@@ -71,14 +72,14 @@ var Register = React.createClass({
 
 	render: function(){
 		return(
-			<form role="form" className="landing-wide-form landing-form-overlay dark nobottommargin clearfix" style={{bottom:36}}>
+			<form role="form" className="landing-wide-form landing-form-overlay dark nobottommargin clearfix"  style={{top:4, opacity:0.9, margin:30, padding:20}}>
                 <div className="heading-block nobottommargin nobottomborder">
                     <h2>Sign Up for FREE</h2>
                     <span>First Order Is on Us!</span>
                 </div>
                 <div className="line" style={{margin: '20px 0 30px'}}></div>
                 <div className="col_full">
-                    <input onChange={this.updateVisitor} id="name" type="text" className="form-control input-lg not-dark" placeholder="Your Name" />
+                    <input onChange={this.updateVisitor} id="firstName" type="text" className="form-control input-lg not-dark" placeholder="Your First Name" />
                 </div>
                 <div className="col_full">
                     <input onChange={this.updateVisitor} id="email" type="email" className="form-control input-lg not-dark" placeholder="Your Email" />
@@ -93,10 +94,10 @@ var Register = React.createClass({
                     </select>
                 </div>
                 <div className="col_full nobottommargin">
-                    <button onClick={this.register} className="btn btn-lg btn-success btn-block nomargin" value="submit">START FREE TRIAL</button>
+                    <button onClick={this.register} className="btn btn-lg btn-success btn-block nomargin"  style={{background:'#e6b800'}}  value="submit">START FREE TRIAL</button>
                 </div>
                 <div className="col_full nobottommargin" style={{textAlign:'center', marginTop:24}}>
-                    <a href="/login">Log In</a>
+                    <a  href="/login"><span style={{fontSize:16, color:'#e6b800'}} >LOG IN</span></a>
                 </div>
             </form>
 

@@ -56,8 +56,9 @@ var Login = React.createClass({
 
 								<div className="row center">
 									<a href="index.html">
-									<br />
-										<img src="email/logo.png" alt="Fetch Logo" />
+									<br /><br />
+									<h1 style={{size:'96', color:'#e6005c'}} >FETCH</h1>
+
 									</a>
 								</div>
 								<br />
@@ -79,7 +80,7 @@ var Login = React.createClass({
 											</div>
 											<br />
 											<div className="col_full nobottommargin center">
-												<button onClick={this.login} className="button button-3d button-red nomargin" id="login-form-submit" name="login-form-submit" value="login">Login</button>
+												<button onClick={this.login} className="button button-3d  nomargin" style={{background:'#e6005c'}} id="login-form-submit" name="login-form-submit" value="login">Login</button>
 											</div>
 										</form>
 

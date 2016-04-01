@@ -19790,7 +19790,46 @@
 										React.createElement(
 											'div',
 											null,
-											'About Me'
+											'About The Developer'
+										)
+									)
+								),
+								React.createElement(
+									'li',
+									null,
+									React.createElement(
+										'a',
+										{ href: '/login' },
+										React.createElement(
+											'div',
+											null,
+											'Log In'
+										)
+									)
+								),
+								React.createElement(
+									'li',
+									null,
+									React.createElement(
+										'a',
+										{ href: '/account' },
+										React.createElement(
+											'div',
+											null,
+											'Account'
+										)
+									)
+								),
+								React.createElement(
+									'li',
+									null,
+									React.createElement(
+										'a',
+										{ href: '/orders' },
+										React.createElement(
+											'div',
+											null,
+											'Orders'
 										)
 									)
 								),
@@ -27830,7 +27869,7 @@
 						React.createElement(
 							"div",
 							{ className: "col_half" },
-							"Copyrights © 2016 All Rights Reserved by Fetch Inc.",
+							"Copyrights © 2016 All Rights Reserved by Marie-France Han",
 							React.createElement("br", null),
 							React.createElement(
 								"div",
@@ -27869,7 +27908,7 @@
 							),
 							React.createElement("div", { className: "clear" }),
 							React.createElement("i", { className: "icon-envelope2" }),
-							"info@fetch.com",
+							"mf212mf@gmail.com",
 							React.createElement(
 								"span",
 								{ className: "middot" },
@@ -27927,7 +27966,8 @@
 		updateVisitor: function updateVisitor(event) {
 			var updatedVisitor = {
 				id: this.state.visitor.id,
-				name: this.state.visitor.name,
+				firstName: this.state.visitor.firstName,
+				lastName: this.state.visitor.lastName,
 				type: this.state.visitor.type,
 				email: this.state.visitor.email,
 				password: this.state.visitor.password
@@ -27967,7 +28007,7 @@
 		render: function render() {
 			return React.createElement(
 				'form',
-				{ role: 'form', className: 'landing-wide-form landing-form-overlay dark nobottommargin clearfix', style: { bottom: 36 } },
+				{ role: 'form', className: 'landing-wide-form landing-form-overlay dark nobottommargin clearfix', style: { top: 4, opacity: 0.9, margin: 30, padding: 20 } },
 				React.createElement(
 					'div',
 					{ className: 'heading-block nobottommargin nobottomborder' },
@@ -27986,7 +28026,7 @@
 				React.createElement(
 					'div',
 					{ className: 'col_full' },
-					React.createElement('input', { onChange: this.updateVisitor, id: 'name', type: 'text', className: 'form-control input-lg not-dark', placeholder: 'Your Name' })
+					React.createElement('input', { onChange: this.updateVisitor, id: 'firstName', type: 'text', className: 'form-control input-lg not-dark', placeholder: 'Your First Name' })
 				),
 				React.createElement(
 					'div',
@@ -28021,7 +28061,7 @@
 					{ className: 'col_full nobottommargin' },
 					React.createElement(
 						'button',
-						{ onClick: this.register, className: 'btn btn-lg btn-success btn-block nomargin', value: 'submit' },
+						{ onClick: this.register, className: 'btn btn-lg btn-success btn-block nomargin', style: { background: '#e6b800' }, value: 'submit' },
 						'START FREE TRIAL'
 					)
 				),
@@ -28031,7 +28071,11 @@
 					React.createElement(
 						'a',
 						{ href: '/login' },
-						'Log In'
+						React.createElement(
+							'span',
+							{ style: { fontSize: 16, color: '#e6b800' } },
+							'LOG IN'
+						)
 					)
 				)
 			);
@@ -28080,7 +28124,7 @@
 											React.createElement('br', null),
 											React.createElement(
 												'h2',
-												{ style: { color: '#fff' }, 'data-caption-animate': 'fadeInUp' },
+												{ style: { color: '#e6b800' } },
 												'Fetch'
 											),
 											React.createElement(
@@ -28146,13 +28190,13 @@
 										),
 										React.createElement(
 											'h3',
-											null,
-											'Place Order'
+											{ style: { color: '#e6b800' } },
+											'Simple Orders'
 										),
 										React.createElement(
 											'p',
 											null,
-											'Simply type what you want and where it is'
+											'Simply type what you want and where we can find it for you'
 										)
 									)
 								),
@@ -28173,13 +28217,13 @@
 										),
 										React.createElement(
 											'h3',
-											null,
-											'Fetch'
+											{ style: { color: '#e6b800' } },
+											'Lightning Speed'
 										),
 										React.createElement(
 											'p',
 											null,
-											'Fetecher will deliver items less than 30mins'
+											'Fetcher will deliver items less than 20 minutes'
 										)
 									)
 								),
@@ -28200,8 +28244,8 @@
 										),
 										React.createElement(
 											'h3',
-											null,
-											'Payment'
+											{ style: { color: '#e6b800' } },
+											'Easy Payments'
 										),
 										React.createElement(
 											'p',
@@ -28220,17 +28264,12 @@
 								'div',
 								{ className: 'col-md-11' },
 								React.createElement(
-									'h2',
-									null,
-									'Benefits'
-								),
-								React.createElement(
 									'div',
 									{ className: 'heading-block' },
 									React.createElement(
 										'h4',
 										null,
-										'Simplicity'
+										'Simple Interface'
 									),
 									React.createElement(
 										'span',
@@ -29223,7 +29262,12 @@
 										'a',
 										{ href: 'index.html' },
 										React.createElement('br', null),
-										React.createElement('img', { src: 'email/logo.png', alt: 'Fetch Logo' })
+										React.createElement('br', null),
+										React.createElement(
+											'h1',
+											{ style: { size: '96', color: '#e6005c' } },
+											'FETCH'
+										)
 									)
 								),
 								React.createElement('br', null),
@@ -29268,7 +29312,7 @@
 												{ className: 'col_full nobottommargin center' },
 												React.createElement(
 													'button',
-													{ onClick: this.login, className: 'button button-3d button-red nomargin', id: 'login-form-submit', name: 'login-form-submit', value: 'login' },
+													{ onClick: this.login, className: 'button button-3d  nomargin', style: { background: '#e6005c' }, id: 'login-form-submit', name: 'login-form-submit', value: 'login' },
 													'Login'
 												)
 											)
