@@ -1,6 +1,8 @@
 # fetchall
 
-A Delivery App using REACT
+A Delivery App using REACT<br>
+Available on: https://mf-fetch.herokuapp.com
+<br>
 
 This is a group project (4 students) created over two weeks of REACT.js studies. I then made some personal tweaks to the front-end for more impactful language and consistent color scheme. <br>
 
